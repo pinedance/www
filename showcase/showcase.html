@@ -67,70 +67,24 @@
         <!-- /.row -->
 
         <!-- Projects Row -->
-        <div class="row">
+        <div class="row" ng-repeat="data in rowDatas">
             <div class="col-md-6 portfolio-item">
-                <a href="http://54.64.26.1:3838/myapp/SymAcuIndependence/" target="_blank">
-                    <img class="img-responsive" src="../public/screenshot/SymAcuIndependence.png" alt="" style="width:700px;height:400px">
+                <a href="{{data.left.direct}}" target="_blank">
+                    <img class="img-responsive" src="{{data.left.img}}" alt="" style="width:700px;height:400px">
                 </a>
                 <h3>
-                    <a href="http://54.64.26.1:3838/myapp/SymAcuIndependence/" target="_blank">병증과 경혈 사이의 관계 분석(침구자생경)</a>
+                    <a href="{{data.left.direct}}" target="_blank">{{data.left.title}}</a>
                 </h3>
-                <p>Weighted Euclidean Distance and Association Strength.</p>
+                <p>{{data.left.desc}}</p>
             </div>
             <div class="col-md-6 portfolio-item">
-                <a href="http://54.64.26.1:3838/myapp/t01hfihf/" target="_blank"">
-                    <img class="img-responsive" src="../public/screenshot/t01hfihf.png" alt="" style="width:700px;height:400px">
+                <a href="{{data.right.direct}}" target="_blank"">
+                    <img class="img-responsive" src="{{data.right.img}}" alt="" style="width:700px;height:400px">
                 </a>
                 <h3>
-                    <a href="http://54.64.26.1:3838/myapp/t01hfihf/" target="_blank">병증과 처방 사이의 관계 분석1 (청강의감)</a>
+                    <a href="{{data.right.direct}}" target="_blank">{{data.right.title}}</a>
                 </h3>
-                <p>HF-IFF</p>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <!-- Projects Row -->
-        <div class="row">
-            <div class="col-md-6 portfolio-item">
-                <a href="http://54.64.26.1:3838/myapp/t02SensSpec/" target="_blank"">
-                    <img class="img-responsive" src="../public/screenshot/t02SensSpec.png" alt="" style="width:700px;height:400px">
-                </a>
-                <h3>
-                    <a href="http://54.64.26.1:3838/myapp/t02SensSpec/" target="_blank">병증과 처방 사이의 관계 분석2 (청강의감)</a>
-                </h3>
-                <p>Sens Spec</p>
-            </div>
-            <div class="col-md-6 portfolio-item">
-                <a href="http://54.64.26.1:3838/myapp/CGanalyser/" target="_blank"">
-                    <img class="img-responsive" src="../public/screenshot/t3CGanalyser.png" alt="" style="width:700px;height:400px">
-                </a>
-                <h3>
-                    <a href="http://54.64.26.1:3838/myapp/CGanalyser/" target="_blank">병증과 처방 사이의 관계 분석3 (청강의감)</a>
-                </h3>
-                <p>HF-IFF and Sens Spec</p>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <!-- Projects Row -->
-        <div class="row">
-            <div class="col-md-6 portfolio-item">
-                <a href="own/spa/formulafinder.html" target="_blank">
-                    <img class="img-responsive" src="../public/screenshot/formulafinder-html.png" alt="" style="width:700px;height:400px">
-                </a>
-                <h3>
-                    <a href="own/spa/formulafinder.html" target="_blank">처방분석기</a>
-                </h3>
-                <p>Formula Finder</p>
-            </div>
-            <div class="col-md-6 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="#">Project Six</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                <p>{{data.right.desc}}</p>
             </div>
         </div>
         <!-- /.row -->
@@ -200,7 +154,59 @@
 					} else {
 						return(thisYear);
 					}
+				}
+					
+				$scope.rowDatas = [				
+					{"left": 
+						{
+							"direct":"http://54.64.26.1:3838/myapp/SymAcuIndependence/",
+							"img":"../public/screenshot/SymAcuIndependence.png",
+							"title":"병증과 경혈 사이의 관계 분석(침구자생경)",
+							"desc":"Weighted Euclidean Distance and Association Strength."
+						},
+					"right": 
+						{
+							"direct":"http://54.64.26.1:3838/myapp/t01hfihf/",
+							"img":"../public/screenshot/t01hfihf.png",
+							"title":"병증과 처방 사이의 관계 분석1 (청강의감)",
+							"desc":"HF-IFF"
+						}
+					},
+					{"left": 
+						{
+							"direct":"http://54.64.26.1:3838/myapp/t02SensSpec/",
+							"img":"../public/screenshot/t02SensSpec.png",
+							"title":"병증과 처방 사이의 관계 분석2 (청강의감)",
+							"desc":"Sens Spec"
+						},
+					"right": 
+						{
+							"direct":"http://54.64.26.1:3838/myapp/CGanalyser/",
+							"img":"../public/screenshot/t3CGanalyser.png",
+							"title":"병증과 처방 사이의 관계 분석3 (청강의감)",
+							"desc":"HF-IFF and Sens Spec"
+						}
+					},
+					{"left": 
+						{
+							"direct":"own/spa/formulafinder.html",
+							"img":"../public/screenshot/formulafinder-html.png",
+							"title":"처방분석기",
+							"desc":"Formula Finder"
+						},
+					"right": 
+						{
+							"direct":"#",
+							"img":"http://placehold.it/700x400",
+							"title":"Project",
+							"desc":"준비중"
+						}
 					}
+				]
+					
+
+
+					
 			}]);
 		})();
 	</script>
