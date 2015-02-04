@@ -19,10 +19,15 @@ footer {
 .imgcontainer {
     width: 500px;
     height: 400px;
+	background-color: gray;
 }
 
 /* resize images */
 .imgcontainer img {
-    width: 100%;
-    height: 100%;
+    width: 99%;
+    height: 99%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin: 0 auto;
 }
