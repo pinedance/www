@@ -15,3 +15,14 @@ body {
 footer {
     margin: 50px 0;
 }
+
+.imgcontainer {
+    width: 500px;
+    height: 400px;
+}
+
+/* resize images */
+.imgcontainer img {
+    width: 100%;
+    height: 100%;
+}
