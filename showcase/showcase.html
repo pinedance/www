@@ -69,21 +69,17 @@
         <!-- Projects Row -->
         <div class="row" ng-repeat="data in rowDatas">
             <div class="col-md-6 portfolio-item">
-				<div class="imgcontainer">
 					<a href="{{data.left.direct}}" target="_blank">
-						<img class="img-responsive img-thumbnail" src="{{data.left.img}}" alt="" >
+						<img class="img-responsive img-thumbnail img-highth" src="{{data.left.img}}" alt="" >
 					</a>
-				</div>
                 <h3>
                     <a href="{{data.left.direct}}" target="_blank">{{data.left.title}}</a>
                 </h3>
                 <p>{{data.left.desc}}</p>
             </div>
             <div class="col-md-6 portfolio-item">
-				<div class="imgcontainer">
 					<a href="{{data.right.direct}}" target="_blank"> 
-						<img class="img-responsive img-thumbnail" src="{{data.right.img}}" alt="">
-					</a>
+						<img class="img-responsive img-thumbnail img-highth" src="{{data.right.img}}" alt="">
 				</div>
                 <h3>
                     <a href="{{data.right.direct}}" target="_blank">{{data.right.title}}</a>
