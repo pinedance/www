@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>AnguarJs SoundManager2</title>
+    <title>my jukebox</title>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
 <!--<link rel="stylesheet" href="./public/player.css"/>  -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,34 +10,32 @@
 	</style>
 </head>
 
-<body ng-app="myApp">
+<body ng-app="myApp" ng-controller="MainCtrl">
 	<header>
 		<div class="jumbotron">
 			<div class="container">
-				<div class="col-sm-8">
-					<h1>my App</h1>
-					<p>description !!!</p>
-					<p><a class="btn btn-primary btn-lg" href="#" role="button" ng-click="resetForms()">Reset</a></p>
+				<div class="col-xs-6">
+					<h1>Juke box</h1>
+					<h3>{{ppsong.title}} <span class="label label-default">{{ppsong.artist}}</span></h3>
+					<p>
+						<button type="button" class="btn btn-default btn-lg" ng-click="stepBackward()"><span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span></button>
+						<button type="button" class="btn btn-success btn-lg" ng-click="play()"><span class="glyphicon glyphicon-play" aria-hidden="true"></button>
+						<button type="button" class="btn btn-danger btn-lg" ng-click="pause()"><span class="glyphicon glyphicon-pause" aria-hidden="true"></button>
+						<button type="button" class="btn btn-default btn-lg" ng-click="stepForward()"><span class="glyphicon glyphicon-step-forward" aria-hidden="true"></button>
+					</p>
 				</div>
-				<div class="col-sm-4 ios-store">
+				<div class="col-xs-6">
 					<img src="http://cfile22.uf.tistory.com/image/2373E2335293CD600DC795" alt="" width="160px" class="pull-right">  
 				</div>
 			</div>
 		</div>
 	</header>
 
-	<div class="container" ng-controller="MainCtrl">
+	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<div class="well">
-					<h3>{{ppsong.title}} <span class="label label-default">{{ppsong.artist}}</span></h3>
-				</div>
 				<div>
 					<youtube-video video-url="ppsong.url" player="youtubePlayer" player-vars="youtubePlayerVars" player-width="'0px'" player-height="'0px'"></youtube-video>
-					<button type="button" class="btn btn-default" ng-click="stepBackward()"><span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span></button>
-					<button type="button" class="btn btn-success" ng-click="play()"><span class="glyphicon glyphicon-play" aria-hidden="true"></button>
-					<button type="button" class="btn btn-danger" ng-click="pause()"><span class="glyphicon glyphicon-pause" aria-hidden="true"></button>
-					<button type="button" class="btn btn-default" ng-click="stepForward()"><span class="glyphicon glyphicon-step-forward" aria-hidden="true"></button>
 				</div>
 				<table class="table table-hover">
 	<!--		<caption><h2>Play List</h2></caption>		-->
@@ -45,9 +43,10 @@
 						<tr>
 							<th></th>
 							<th></th>
-							<th>Title</th>
-							<th>Artist</th>
-							<th>URL</th>	
+							<th class="col-md-2">Title</th>
+							<th class="col-md-2">Artist</th>
+							<th class="col-md-4">URL</th>	
+							<th></th>
 							<th></th>
 							<th></th>
 						</tr>
@@ -56,9 +55,10 @@
 						<tr ng-repeat="song in songs">
 							<th><span ng-click="delete(song)" class="glyphicon glyphicon-remove-circle" aria-hidden="true"></th>
 							<th><span  ng-click="edit(song)" class="glyphicon glyphicon-edit" aria-hidden="true"></th>
-							<th>{{song.title}}</th>
-							<th>{{song.artist}}</th>
-							<th>{{song.url}}</th>
+							<th class="col-md-1">{{song.title}}</th>
+							<th class="col-md-1">{{song.artist}}</th>
+							<th class="col-md-2"><small>{{song.url}}</small></th>
+							<th><span  ng-click="playThis(song)" class="glyphicon glyphicon-play" aria-hidden="true"></th>
 							<th><span ng-click="up(song)" class="glyphicon glyphicon-collapse-up" aria-hidden="true"></th>
 							<th><span  ng-click="down(song)" class="glyphicon glyphicon-collapse-down" aria-hidden="true"></th>
 						</tr>
@@ -66,18 +66,20 @@
 					<tfoot ng-show="!editing">
 						<th></th>
 						<th><span ng-click="add(newSong)" class="glyphicon glyphicon-check" aria-hidden="true"></th>
-						<th><input ng-model='newSong.title' type='text' placeholder='title'></th>
-						<th><input ng-model='newSong.artist' type='text' placeholder='artist'></th>
-						<th><input ng-model='newSong.url' type='text' placeholder='url'></th>
+						<th class="col-md-1"><input ng-model='newSong.title' type='text' placeholder='title'></th>
+						<th class="col-md-1"><input ng-model='newSong.artist' type='text' placeholder='artist'></th>
+						<th class="col-md-2"><input ng-model='newSong.url' type='text' placeholder='url'></th>
+						<th></th>
 						<th></th>
 						<th></th>
 					</tfoot>
 					<tfoot ng-show="editing">
 						<th></th>
 						<th><span ng-click="update(updatedSong)" class="glyphicon glyphicon-check" aria-hidden="true"></th>
-						<th><input ng-model='updatedSong.title' type='text'></th>
-						<th><input ng-model='updatedSong.artist' type='text'></th>
-						<th><input ng-model='updatedSong.url' type='text'></th>
+						<th class="col-md-1"><input ng-model='updatedSong.title' type='text'></th>
+						<th class="col-md-1"><input ng-model='updatedSong.artist' type='text'></th>
+						<th class="col-md-2"><input ng-model='updatedSong.url' type='text'></th>
+						<th></th>
 						<th></th>
 						<th></th>
 					</tfoot>
@@ -177,6 +179,10 @@
 				$scope.songs.sortby("ord");
 			};
 
+			$scope.playThis = function(song){
+				$scope.ppsong = song;
+				$scope.play();
+			};
 
 			$scope.play = function(){
 				if($scope.ppsong.type == "youtube"){
