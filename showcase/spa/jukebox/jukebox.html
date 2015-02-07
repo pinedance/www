@@ -202,12 +202,12 @@
 			
 			$scope.stepBackward = function(){
 				$scope.ppsong = $scope.songs.prev();
-				$scope.play();
+				$scope.youtubePlayer.playVideo();
 			};
 
 			$scope.stepForward = function(){
 				$scope.ppsong = $scope.songs.next();
-				$scope.play();
+				$scope.youtubePlayer.playVideo();
 			};
 			
 			$scope.$on('youtube.player.ended', function ($event, player) {
