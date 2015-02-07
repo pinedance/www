@@ -1,0 +1,47 @@
+$border:rgba(192,192,192,1);
+.audiowrap{
+    margin:5px 0;
+    border:solid 1px $border;
+    border-radius:3px;
+    width:100%;
+    overflow:auto;
+    background-color:#efefef;
+    > button{
+       float:left; 
+    }
+    .time{
+        float:right;
+        background-color:white;
+        color:black;
+        text-align:center;
+        font-size:0.8em;
+        padding:2px 5px;
+    }
+    .rangewrap{
+        background-color:white;
+        border-right:solid 1px $border;
+        border-left:solid 1px $border;
+        padding:0 6px;
+        overflow:hidden;
+        input{
+            width:100%;
+        }
+    }
+    .volwrap{
+        background-color:white;
+        border-right:solid 1px $border;
+        float:right;
+        padding:0 6px;
+        width:100px; 
+        overflow:auto;
+        .wrap2{
+          overflow:hidden;
+          input{
+          }
+        }
+        img{
+          float:left;
+          height:19px;
+        }
+    }
+}

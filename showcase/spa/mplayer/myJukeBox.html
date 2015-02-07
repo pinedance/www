@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AnguarJs SoundManager2</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+<!--<link rel="stylesheet" href="./public/player.css"/>  -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">
+	</style>
+</head>
+
+<body ng-app="myApp">
+	<header>
+		<div class="jumbotron">
+			<div class="container">
+				<div class="col-sm-8">
+					<h1>my App</h1>
+					<p>description !!!</p>
+					<p><a class="btn btn-primary btn-lg" href="#" role="button" ng-click="resetForms()">Reset</a></p>
+				</div>
+				<div class="col-sm-4 ios-store">
+					<img src="http://cfile22.uf.tistory.com/image/2373E2335293CD600DC795" alt="" width="160px" class="pull-right">  
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="container" ng-controller="MainCtrl">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="well">
+					<h3>{{ppsong.title}} <span class="label label-default">{{ppsong.artist}}</span></h3>
+				</div>
+				<div>
+					<youtube-video video-url="ppsong.url" player="youtubePlayer" player-vars="youtubePlayerVars" player-width="'0px'" player-height="'0px'"></youtube-video>
+					<button type="button" class="btn btn-default" ng-click="stepBackward()"><span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span></button>
+					<button type="button" class="btn btn-success" ng-click="play()"><span class="glyphicon glyphicon-play" aria-hidden="true"></button>
+					<button type="button" class="btn btn-danger" ng-click="pause()"><span class="glyphicon glyphicon-pause" aria-hidden="true"></button>
+					<button type="button" class="btn btn-default" ng-click="stepForward()"><span class="glyphicon glyphicon-step-forward" aria-hidden="true"></button>
+				</div>
+				<table class="table table-hover">
+	<!--		<caption><h2>Play List</h2></caption>		-->
+					<thead>
+						<tr>
+							<th></th>
+							<th></th>
+							<th>Title</th>
+							<th>Artist</th>
+							<th>URL</th>	
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="song in songs">
+							<th><span ng-click="delete(song)" class="glyphicon glyphicon-remove-circle" aria-hidden="true"></th>
+							<th><span  ng-click="edit(song)" class="glyphicon glyphicon-edit" aria-hidden="true"></th>
+							<th>{{song.title}}</th>
+							<th>{{song.artist}}</th>
+							<th>{{song.url}}</th>
+							<th><span ng-click="up(song)" class="glyphicon glyphicon-collapse-up" aria-hidden="true"></th>
+							<th><span  ng-click="down(song)" class="glyphicon glyphicon-collapse-down" aria-hidden="true"></th>
+						</tr>
+					</tbody>
+					<tfoot ng-show="!editing">
+						<th></th>
+						<th><span ng-click="add(newSong)" class="glyphicon glyphicon-check" aria-hidden="true"></th>
+						<th><input ng-model='newSong.title' type='text' placeholder='title'></th>
+						<th><input ng-model='newSong.artist' type='text' placeholder='artist'></th>
+						<th><input ng-model='newSong.url' type='text' placeholder='url'></th>
+						<th></th>
+						<th></th>
+					</tfoot>
+					<tfoot ng-show="editing">
+						<th></th>
+						<th><span ng-click="update(updatedSong)" class="glyphicon glyphicon-check" aria-hidden="true"></th>
+						<th><input ng-model='updatedSong.title' type='text'></th>
+						<th><input ng-model='updatedSong.artist' type='text'></th>
+						<th><input ng-model='updatedSong.url' type='text'></th>
+						<th></th>
+						<th></th>
+					</tfoot>
+				</table>
+			</div>
+			
+		</div> <!-- row -->
+	</div> <!-- container -->
+
+<!--   script...............................................................................................-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/angularfire/0.9.2/angularfire.min.js"></script>	
+	
+	<script src="./public/exArray.js"></script>
+	<script src="./public/angular-myplayer-embed.js"></script>	
+
+    <script>
+	(function(){
+	var app = angular.module('myApp', ["firebase", "myplayer-embed"])
+    app.controller('MainCtrl', ["$scope", "$firebase", function ($scope, $firebase) {
+	    var ref = new Firebase("https://brilliant-torch-7744.firebaseio.com/");
+		// create an AngularFire reference to the data
+		var obj = $firebase(ref).$asArray();
+		
+		obj.$loaded().then(function () {
+			//$scope.songs = obj.sortby("ord");
+			$scope.songs = obj;
+			$scope.songs.sortby("ord");
+			console.log($scope.songs);
+			$scope.ppsong = $scope.songs.current();   //present playing song init
+
+			//$scope.youtubePlayerVars = {
+			//	controls: 0,
+			//	autoplay: 0
+			//};
+			
+			$scope.add = function(){
+				$scope.songs.$add({
+				   'title': $scope.newSong.title,
+				   'artist': $scope.newSong.artist,
+				   'url': $scope.newSong.url,
+				   'type': "youtube",
+				   'ord': $scope.songs.length
+				 });
+				$scope.newSong = {
+				   'title': "",
+				   'artist': "", 
+				   'url': "",
+				   'type': "youtube",
+				};
+			};
+
+
+			$scope.delete = function(song){
+				$scope.songs.$remove(song);
+			};
+
+			$scope.edit = function(song){
+				$scope.updatedSong = song;
+				$scope.editing = true; 
+			};
+
+			$scope.update = function(updatedSong){
+				$scope.songs.$save(updatedSong);
+				$scope.editing = false; 
+			};
+
+			$scope.up = function(song){
+				var i = song.ord;
+				if(i==0){
+					return false
+				} else {
+					var j = --song.ord;
+					var other = $scope.songs.search("ord", j);
+					other.ord = i;
+					$scope.songs.$save(song);
+					$scope.songs.$save(other);
+				}
+				$scope.songs.sortby("ord");
+			};
+
+			$scope.down = function(song){
+				var i = song.ord;
+				if(i==$scope.songs.length-1){
+					return false
+				} else {
+					var j = ++song.ord;
+					var other = $scope.songs.search("ord", j)
+					other.ord = i;
+					$scope.songs.$save(song);
+					$scope.songs.$save(other);
+				}
+				$scope.songs.sortby("ord");
+			};
+
+
+			$scope.play = function(){
+				if($scope.ppsong.type == "youtube"){
+					$scope.youtubePlayer.playVideo();
+				} else {
+					$scope.mp3Player.playMp3();
+				}
+			};
+
+			$scope.pause = function(){
+				if($scope.ppsong.type == "youtube"){
+					$scope.youtubePlayer.stopVideo();
+				} else {
+					$scope.mp3Player.stopMp3();   /////////////////////
+				}
+			};
+			
+			$scope.stepBackward = function(){
+				$scope.ppsong = $scope.songs.prev();
+				$scope.play();
+			};
+
+			$scope.stepForward = function(){
+				$scope.ppsong = $scope.songs.next();
+				$scope.play();
+			};
+			
+			$scope.$on('youtube.player.ended', function ($event, player) {
+				$scope.stepForward();
+			});
+
+		});
+
+
+	}]); //sontroller
+	})(); //module
+	
+	
+	
+	</script>
+
+
+</body>
+
+</html>
