@@ -52,7 +52,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="song in songs">
+						<tr ng-repeat="song in songs" ng-class="{info: song == ppsong}">
 							<th><span ng-click="delete(song)" class="glyphicon glyphicon-remove-circle" aria-hidden="true"></th>
 							<th><span  ng-click="edit(song)" class="glyphicon glyphicon-edit" aria-hidden="true"></th>
 							<th class="col-md-1">{{song.title}}</th>
