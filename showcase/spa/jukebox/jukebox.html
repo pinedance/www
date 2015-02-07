@@ -112,13 +112,12 @@
 			//$scope.songs = obj.sortby("ord");
 			$scope.songs = obj;
 			$scope.songs.sortby("ord");
-			console.log($scope.songs);
 			$scope.ppsong = $scope.songs.current();   //present playing song init
 
-			//$scope.youtubePlayerVars = {
-			//	controls: 0,
-			//	autoplay: 0
-			//};
+			$scope.youtubePlayerVars = {
+				controls: 0,
+				autoplay: 1
+			};
 			
 			$scope.add = function(){
 				$scope.songs.$add({
@@ -202,12 +201,12 @@
 			
 			$scope.stepBackward = function(){
 				$scope.ppsong = $scope.songs.prev();
-				$scope.youtubePlayer.playVideo();
+				$scope.play();
 			};
 
 			$scope.stepForward = function(){
 				$scope.ppsong = $scope.songs.next();
-				$scope.youtubePlayer.playVideo();
+				$scope.play();
 			};
 			
 			$scope.$on('youtube.player.ended', function ($event, player) {
