@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html ng-app="gofangApp">
 	<head>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -10,15 +10,17 @@
 		<header>
 		<div class="jumbotron">
 			<div class="container">
-				<div class="col-sm-8">
-					<h1>Gofang App</h1>
-					<p>Find Your Own Formulas !!!</p>
-					<p><a class="btn btn-primary btn-lg" href="#" role="button" ng-click="resetForms()">Reset</a></p>
-				</div>
-				<div class="col-sm-4 ios-store">
-					<img src="http://livedoor.blogimg.jp/bakusei/imgs/c/a/cacbdc7e.jpg" alt="" width="160px" class="pull-right img-responsive">  
-				</div>
-			</div>
+                <div class="row">
+                    <div class="col-sm-6 col-xs-8">
+                        <h1>Gofang App</h1>
+                        <p>Find Your Own Formulas !!!</p>
+                        <p><a class="btn btn-primary btn-lg" href="#" role="button" ng-click="resetForms()">Reset</a></p>
+                    </div>
+                    <div class="col-sm-6 col-xs-4">
+                        <img src="http://livedoor.blogimg.jp/bakusei/imgs/c/a/cacbdc7e.jpg" alt="" width="160px" class="pull-right img-responsive">
+                    </div>
+                </div>
+            </div>
 		</div>
 		</header>
 		
@@ -37,11 +39,6 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-6">
-				<div clsss="list-group">
-					<a href="#" class="list-group-item" ng-repeat="formula in results" ng-click="showDetail(formula)">{{formula}} </a>
-				</div>
-	  		</div>
 			<div class="col-sm-6" ng-show="detail">
 				<div class="well">
 					<p>처방명 : {{detail.txName}}</p>
@@ -51,13 +48,18 @@
 					<blockquote><p>{{yack}}</p></blockquote>
 				</div>
 			</div>
+			<div class="col-sm-6">
+				<div clsss="list-group">
+					<a href="#" class="list-group-item" ng-repeat="formula in results" ng-click="showDetail(formula)">{{formula}} </a>
+				</div>
+	  		</div>
 		</div>
 		</div>
 
 		
 		<footer class="footer">
 			<div class="container">
-				<p class="text-muted">Copyright &copy; {{copyrightYear()}} Junho. <span  class="text-center">Contact or Report issue : <a href='https://bitbucket.org/pinedance/myspa/issues/new' target='_blank'><kbd>Here</kbd></a></span><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img class="pull-right" alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a></p>
+				<p class="text-muted">Copyright &copy; {{copyrightYear()}} Junho. <span  class="text-center">Contact or Report issue : <a href='https://github.com/pinedance/pinedance.github.io/issues' target='_blank'><kbd>Here</kbd></a></span></p>
 				<small class="text-muted">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</small>
 			</div>
 		</footer>

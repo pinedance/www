@@ -104,7 +104,7 @@
 	(function(){
 	var app = angular.module('myApp', ["firebase", "myplayer-embed"])
     app.controller('MainCtrl', ["$scope", "$firebase", function ($scope, $firebase) {
-	    var ref = new Firebase("https://brilliant-torch-7744.firebaseio.com/");
+	    var ref = new Firebase("https://brilliant-torch-7744.firebaseio.com/default");
 		// create an AngularFire reference to the data
 		var obj = $firebase(ref).$asArray();
 		
