@@ -3,8 +3,8 @@
 	<head>
         <title>goFang</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-		<link rel="stylesheet" href="./public/ng-tags-input.min.css">
-		<link rel="stylesheet" href="./public/sticky-footer.css">	
+		<link rel="stylesheet" href="../publicAsset/ng-tags-input/ng-tags-input.min.css">
+		<link rel="stylesheet" href="../publicAsset/css/sticky-footer.css">	
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">	
 	</head>
 	<body ng-controller="FormulaCtrl">
@@ -77,7 +77,8 @@
 		<script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
 		<script src="https://cdn.firebase.com/libs/angularfire/0.9.1/angularfire.min.js"></script>
 
-		<script src="./public/ng-tags-input.min.js"></script>
+		<script src="../publicAsset/javascript/exArray.js"></script>
+		<script src="../publicAsset/ng-tags-input/ng-tags-input.min.js"></script>
 
 <!--   script............................................................................................-->		
 		
@@ -103,12 +104,6 @@
 					var sync = $firebase(ref);
 					var data = sync.$asObject();
 				
-					//var herbList = function(){
-					//	return Object.keys(data.herbs).map(function(item){ return { "herb": item } });
-					//}
-					/// tags
-					//var herbs_list = Object.keys(data.herbs).map(function(item){ return { "herb": item } });
-
 					$scope.loadItems = function(query) {
 						var deferred = $q.defer();
 						var filtered = Object.keys(data.herbs).filter(function(s) { return s.indexOf(query) > -1; });
@@ -116,14 +111,6 @@
 						return deferred.promise;
 					};  ///solution : http://stackoverflow.com/questions/23069562/autocomplete-using-ngtagsinput-cannot-read-property-then-of-undefined
 					
-					Array.prototype.intersection = function(b){
-						return this.filter(function(i) {return b.indexOf(i) != -1 });
-					};
-					
-					Array.prototype.diff = function(b) {
-						return this.filter(function(i) {return b.indexOf(i) < 0;});
-					};
-				
 					$scope.find = function(){
 						var tmp_in = $scope.inHerbs.map(function(item) { return item.herb });
 						var tmp_out = $scope.outHerbs.map(function(item) { return item.herb });
