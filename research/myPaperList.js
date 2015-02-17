@@ -95,7 +95,7 @@ var myPapers = [
                 "title2":"A Study Of The Acupuncture & Moxibustion Fix-a-Day Method In Seunjeongwon-Ilgi",
                 "journal":"한국의사학회지",
                 "serial":"22(1)",
-                "firstAuth":"오준호"
+                "firstAuth":"오준호, 차웅석, 김남일"
             },
             {
                 "year":"2009",
@@ -104,7 +104,7 @@ var myPapers = [
                 "title2":"The Development Of Acupuncture & Moxibustion Fix-a-day Method  Shown In The Acupuncture Documents Of The Chosun-Korea Dynasty",
                 "journal":"한국의사학회지",
                 "serial":"22(2)",
-                "firstAuth":"오준호"
+                "firstAuth":"오준호 차웅석, 김남일"
             },
             {
                 "year":"2009",
@@ -131,7 +131,7 @@ var myPapers = [
                 "title2":"Comparative Study of Stroke Treated by Acupuncture in the Medical Documents Of the Chosun-Korea Dynasty",
                 "journal":"한국한의학연구원논문집",
                 "serial":"15(3)",
-                "firstAuth":"오준호"
+                "firstAuth":"오준호, 차웅석, 김남일"
             },
             {
                 "year":"2009",
@@ -314,7 +314,7 @@ var myPapers = [
                 "title2":"A Study on A Phase of Denotation Expansion of Oriental Medicine in the late Joseon Dynasty",
                 "journal":"한국한의학연구원논문집",
                 "serial":"17(3)",
-                "firstAuth":"박상영 오준호, 권오민"
+                "firstAuth":"박상영, 오준호, 권오민"
             },
             {
                 "year":"2011",
@@ -343,11 +343,11 @@ var myPapers = [
             {
                 "year":"2012",
                 "title":"전통사회에서 외래종 작물인 고추의 효능 인식 -한국 전통의서를 중심으로-",
-                "linkAddress":"http://ocean.kisti.re.kr/IS_mvpopo001P.do?method=multMain&poid=ksfc&free=free",
+                "linkAddress":"http://scholar.ndsl.kr/schDetail.do?cn=JAKO201212961959810",
                 "title2":"Recognition of Medicinal Efficacy of Pepper as an Introduced Species in Traditional Medicine",
                 "journal":"한국식생활문화학회지",
                 "serial":"27(1)",
-                "firstAuth":"오준호"
+                "firstAuth":"오준호, 권오민, 박상영, 안상우"
             },
             {
                 "year":"2012",
@@ -356,7 +356,7 @@ var myPapers = [
                 "title2":"A Study on Translation of ｢Kumryo-socho(金蓼小抄)｣",
                 "journal":"대한한의학원전학회지",
                 "serial":"25(1)",
-                "firstAuth":"박상영"
+                "firstAuth":"박상영, 권오민, 오준호"
             },
             {
                 "year":"2012",
@@ -446,7 +446,7 @@ var myPapers = [
             },
             {
                 "year":"2013",
-                "title":"16세기 조선 의서 이석간경험방에 나타난 전통지식 분석 : 죽과 밥을 이용한 식치 처방을 중심으로",
+                "title":"16세기 조선 의서 이석간경험방에 나타난 전통지식 분석 : 죽과 밥을 이용한 식치 처방을 중심으로",
                 "linkAddress":"http://scholar.ndsl.kr/schDetail.do?cn=JAKO201317642690846",
                 "title2":"Analysis on the Traditional Knowledge Appearing in \"Yi, SeikKan Experience Prescriptions”Which is a Book on Medicine in Joseon  Dynasty in the 16th Century : with a Focus on Medical Treating with Eating Foods Using Porridge and Rice",
                 "journal":"대한예방한의학회지",
@@ -455,7 +455,7 @@ var myPapers = [
             },
             {
                 "year":"2013",
-                "title":"조선 중기 유의(儒醫) 이석간(李碩幹)의 가계와 의약사적 연구 - 새로 발견된 대약부(大藥賦)를 중심으로 -",
+                "title":"조선 중기 유의(儒醫) 이석간(李碩幹)의 가계와 의약사적 연구 -새로 발견된 대약부(大藥賦)를 중심으로-",
                 "linkAddress":"http://scholar.ndsl.kr/schDetail.do?cn=JAKO201329339407095",
                 "title2":"Medical Achievements of Doctor-Lee, Seokgan and Interpretation of the first unveiled ｢Daeyakbu｣",
                 "journal":"한국의사학회지",
@@ -469,7 +469,7 @@ var myPapers = [
                 "title2":"Current Status and Future Issues of Translation in Korean Medicine's Literature",
                 "journal":"민족문화",
                 "serial":"41()",
-                "firstAuth":"오준호"
+                "firstAuth":"오준호, 권오민"
             },
             {
                 "year":"2013",
