@@ -362,7 +362,7 @@ var myPapers = [
                 "year":"2012",
                 "title":"조선후기(朝鮮後期) 상한(傷寒) 연구(硏究)의 일면(一面) - 조선후기(朝鮮後期) 상한(傷寒) 연구서(硏究書) \"상한경험방요촬(傷寒經驗方要撮)\"의 구성과 내용 -",
                 "linkAddress":"http://scholar.ndsl.kr/schDetail.do?cn=JAKO201225150621581",
-                "title2":"Composition and Contents of the Monograph on Theory of Cold Damage- ??Sanghankyeongheombangyochal??(傷寒經驗方要撮) in the Late Joseon Dynasty",
+                "title2":"Composition and Contents of the Monograph on Theory of Cold Damage- Sanghankyeongheombangyochal(傷寒經驗方要撮) in the Late Joseon Dynasty",
                 "journal":"한국한의학연구원논문집",
                 "serial":"18(1)",
                 "firstAuth":"오준호"
@@ -507,7 +507,7 @@ var myPapers = [
                 "year":"2014",
                 "title":"군진의서(軍陣醫書) 행군방편편방(行軍方便便方)의 구성과 내용",
                 "linkAddress":"http://scholar.ndsl.kr/schDetail.do?cn=JAKO201413465493408",
-                "title2":"Composition and Contents of ??Haeng Gun Bang Pyeon Pyeon Bang??, a Military Medicine Literature",
+                "title2":"Composition and Contents of Haeng Gun Bang Pyeon Pyeon Bang, a Military Medicine Literature",
                 "journal":"대전대학교 한의학연구소 논문집",
                 "serial":"22(2)",
                 "firstAuth":"오준호"
