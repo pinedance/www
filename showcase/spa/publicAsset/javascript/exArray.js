@@ -12,31 +12,41 @@ Array.prototype.diff = function(b) {
 
 Array.prototype.now = 0;
 
+Array.prototype.setnow = function(i){
+    var l = this.length;
+    if(l === 0){
+       this.now = 0;
+   } else {
+        var j = i % l;
+        this.now = j;
+   }
+};
+
 Array.prototype.next = function() {
-			var i = ++this.now;
-			var l = this.length;
-			if(l == 0){
-				this.now = 0;
-				return this[0];
-			} else if(i == l){
-				this.now = 0;
-				return this[0];
-			} else {
-				return this[i];
-			}
-		};
+    var i = ++this.now;
+    var l = this.length;
+    if(l === 0){
+		this.now = 0;
+        return this[0];
+   } else {
+        var j = i % l;
+        this.now = j;
+		return this.current();
+   }
+};
 		
 Array.prototype.prev = function() {
 	var i = --this.now;
 	var l = this.length;
-	if(l == 0){
+	if(l === 0){
 		this.now = 0;
 		return this[0];
 	} else if(i < 0){
 		this.now = l - 1;
-		return this[this.now];
+		return this.current();
 	} else {
-		return this[i];
+		this.now = i;
+		return this.current();
 	}
 };
 		
@@ -65,3 +75,16 @@ Array.prototype.sortby = function(key){
 		}
 	);
 };
+
+
+Array.prototype.keys = function(){
+    var idx = [];
+    for(var i=0 ; i<this.length ; i++){ idx.push(i); }   
+    return idx;
+}
+
+Array.prototype.suffle = function(){
+    var o = this;
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+} //[ref](http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript)

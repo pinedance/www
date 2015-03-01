@@ -19,9 +19,10 @@
 					<h3>{{ppsong.title}} <span class="label label-default">{{ppsong.artist}}</span></h3>
 					<p>
 						<button type="button" class="btn btn-default btn-lg" ng-click="stepBackward()"><span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span></button>
-						<button type="button" class="btn btn-success btn-lg" ng-click="play()"><span class="glyphicon glyphicon-play" aria-hidden="true"></button>
-						<button type="button" class="btn btn-danger btn-lg" ng-click="pause()"><span class="glyphicon glyphicon-pause" aria-hidden="true"></button>
-						<button type="button" class="btn btn-default btn-lg" ng-click="stepForward()"><span class="glyphicon glyphicon-step-forward" aria-hidden="true"></button>
+						<button type="button" class="btn btn-success btn-lg" ng-click="play()"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
+						<button type="button" class="btn btn-danger btn-lg" ng-click="pause()"><span class="glyphicon glyphicon-pause" aria-hidden="true"></span></button>
+						<button type="button" class="btn btn-default btn-lg" ng-click="stepForward()"><span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span></button>
+						<button type="button" ng-class="{'btn btn-lg btn-warning': random, 'btn btn-lg btn-default': !random}" ng-click="randomize()"><span class="glyphicon glyphicon-random" aria-hidden="true"></span></button>
 					</p>
 				</div>
 				<div class="col-xs-4">
@@ -72,7 +73,7 @@
 							<th class="col-md-2">{{song.title}}</th>
 							<th class="col-md-2">{{song.artist}}</th>
 							<th class="col-md-2"><small>{{song.url}}</small></th>
-							<th><span ng-click="playThis(song)" class="glyphicon glyphicon-play" aria-hidden="true"></th>
+							<th><span ng-click="playThis($index)" class="glyphicon glyphicon-play" aria-hidden="true"></th>
 							<th><span ng-click="up(song)" class="glyphicon glyphicon-collapse-up" aria-hidden="true"></th>
 							<th><span ng-click="down(song)" class="glyphicon glyphicon-collapse-down" aria-hidden="true"></th>
 						</tr>
@@ -120,11 +121,10 @@
     
     app.controller('MainCtrl', ["$scope", "$firebase", function ($scope, $firebase) {
 
-        var ref = new Firebase("https://brilliant-torch-7744.firebaseio.com/"); // assume value here is { foo: "bar" }
+        var ref = new Firebase("https://brilliant-torch-7744.firebaseio.com/"); 
         var mainObj = $firebase(ref).$asObject();
 
         mainObj.$bindTo($scope, "data").then(function() {
-            console.log($scope.data); 
             setPlayLists();
             $scope.pplaylist = $scope.playlists[0]; 
             setSongs();
@@ -257,8 +257,21 @@
             autoplay: 1
         };
         
-        $scope.playThis = function(song){
-            $scope.ppsong = song;
+        ////// init vars    
+        $scope.random = false;
+        var rindex = [];
+        
+        $scope.randomize = function(){
+            $scope.random = !$scope.random;
+            if($scope.random){
+                rindex = $scope.songs.keys().suffle();
+            }
+        };
+        
+        $scope.playThis = function(index){
+            console.log(index);
+            $scope.ppsong = $scope.songs[index];
+            $scope.songs.setnow(index);
             $scope.play();
         };
 
@@ -279,12 +292,24 @@
         };
 
         $scope.stepBackward = function(){
-            $scope.ppsong = $scope.songs.prev();
+            if($scope.random){
+                var _idx = rindex.prev()
+                $scope.ppsong = $scope.songs[_idx];
+                $scope.songs.setnow(_idx);
+            } else {
+                $scope.ppsong = $scope.songs.prev();
+            }
             $scope.play();
         };
 
         $scope.stepForward = function(){
-            $scope.ppsong = $scope.songs.next();
+            if($scope.random){
+                var _idx = rindex.next()
+                $scope.ppsong = $scope.songs[_idx];
+                $scope.songs.setnow(_idx);
+            } else {
+                $scope.ppsong = $scope.songs.next();
+            }
             $scope.play();
         };
 
