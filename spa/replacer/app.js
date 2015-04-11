@@ -30,8 +30,7 @@ myapp.controller('MainCtrl', function ($scope) {
                  downloadLink.attr('href', window.URL.createObjectURL(blob));
                  downloadLink.attr('download', 'result.txt');
                  downloadLink[0].click();
-	};
-    //http://stackoverflow.com/questions/16514509/how-do-you-serve-a-file-for-download-with-angularjs-or-javascript
+	}; //http://stackoverflow.com/questions/16514509/how-do-you-serve-a-file-for-download-with-angularjs-or-javascript
     
 });
 
@@ -55,4 +54,4 @@ myapp.directive('onReadFile', function ($parse) {
 			});
 		}
 	};
-});
+}); // https://veamospues.wordpress.com/2014/01/27/reading-files-with-angularjs/
