@@ -2,14 +2,29 @@ var myapp = angular.module('myapp', []);
 
 myapp.controller('MainCtrl', function ($scope) {
     
+    $scope.phase = 1;
+    
     $scope.showContent = function($fileContent){
         $scope.content = $fileContent;
+        $scope.phase = 2;
     };
-    
+
+    $scope.saveFile = function(content, outputFilename) {
+        var blob = new Blob([content], { type:"text;charset=utf-8;" });
+        var filename = outputFilename || 'result.txt'
+        var downloadLink = angular.element('<a></a>');
+             downloadLink.attr('href', window.URL.createObjectURL(blob));
+             downloadLink.attr('download', filename);
+             downloadLink[0].click();
+        $scope.phase = 5;
+	}; //http://stackoverflow.com/questions/16514509/how-do-you-serve-a-file-for-download-with-angularjs-or-javascript
+    // require : Blob.js
+
+
     $scope.getMyWordsets = function(event){
         if(event.keyCode === 17 || event.keyCode === 13){
             $scope.wordsets = eval( $scope.myWordsets ); 
-            console.log( $scope.wordsets.length )
+            $scope.phase = 3;
         }
     }
     
@@ -22,16 +37,10 @@ myapp.controller('MainCtrl', function ($scope) {
             tmp = tmp.gsub(arr[i][0], arr[i][1])
         }
         $scope.converted_content = tmp;
+        $scope.phase = 4;
     }
 
-    $scope.saveFile = function () {
-			var blob = new Blob([$scope.converted_content], { type:"text;charset=utf-8;" });			
-			var downloadLink = angular.element('<a></a>');
-                 downloadLink.attr('href', window.URL.createObjectURL(blob));
-                 downloadLink.attr('download', 'result.txt');
-                 downloadLink[0].click();
-	}; //http://stackoverflow.com/questions/16514509/how-do-you-serve-a-file-for-download-with-angularjs-or-javascript
-    
+
 });
 
 myapp.directive('onReadFile', function ($parse) {

@@ -3,11 +3,8 @@
     <head>
         
         <title>rePlacer</title>
-        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script type="text/javascript" src="../publicAsset/javascript/exString.js"></script>
-        <script type="text/javascript" src="app.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">	
     </head>
     
     <body ng-controller="MainCtrl">
@@ -16,41 +13,73 @@
             <div class="jumbotron">
                 <div class="container">
                     <h1>rePlacer</h1>
+                    
+                    <div class="alert alert-info" role="alert" ng-show="phase===1">
+                        <strong>
+                            <span class="glyphicon glyphicon-open-file" aria-hidden="true"></span>
+                            {{ inputFile = 'Select text file'}}
+                        </strong>
+                    </div>
+                    <div class="alert alert-info" role="alert" ng-show="phase===2">
+                        <strong>
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                        {{ inputWordSets = 'Input word sets' }}
+                        </strong>
+                    </div>
+                    <div class="alert alert-info" role="alert" ng-show="phase===3">
+                        <strong>
+                        <span class="glyphicon glyphicon-retweet" aria-hidden="true"></span>
+                        {{ replaceFile = 'Push button to replace'}}
+                        </strong>
+                    </div>
+                    <div class="alert alert-info" role="alert" ng-show="phase===4">
+                        <strong>
+                        <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span>
+                        {{ downloadFile = 'Push button to save file'}}
+                        </strong>
+                    </div>
+                    <div class="alert alert-info" role="alert" ng-show="phase===5">
+                        <strong>
+                        <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                        {{ checkMsg = 'Check output file, please'}}
+                        </strong>
+                    </div>
+    
                 </div>
 
-        
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Select text file</h3>
+                                    <h3 class="panel-title">{{ inputFile }}</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <input type="file" on-read-file="showContent($fileContent)" />
-                                    <p ng-show="content">File content is uploaded</p>
+                                    <input type="file"  class="btn-info" title="Input your file" on-read-file="showContent($fileContent)">
+                                    <p ng-show="content" class="help-block">File content is uploaded</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title" ng-hide="wordsets">Input WordSets</h3>
-                                    <h3 class="panel-title" ng-show="wordsets">push button for replace</h3>
+                                    <h3 class="panel-title">{{ replaceFile }}</h3>
                                 </div>
-                                <div class="panel-body">
-                                    <button class="btn btn-primary" ng-if="wordsets" ng-click="convert()">rePlace!!!</button>
-                                    <p ng-show="converted_content">File content is replaced!!!</p>
+                                <div class="panel-body" ng-if="wordsets">
+                                    <button class="btn btn-primary"  ng-click="convert()">rePlace</button>
+                                    <p ng-show="converted_content" class="help-block">File content is replaced</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">push button for save file</h3>
+                                    <h3 class="panel-title">{{ downloadFile }}</h3>
                                 </div>
-                                <div class="panel-body">
-                                    <a class="btn btn-success" ng-if="content && converted_content" ng-click="saveFile()" ng-href="{{ url }}">Save!!!</a>
+                                <div class="panel-body" ng-if="content && converted_content">
+                                    <input type='text' placeholder="output file name" ng-model="outputFilename" />
+                                    <a class="btn btn-success"  ng-click="saveFile(converted_content, outputFilename)" ng-href="{{ url }}">Save</a>
+                                    <p ng-show="phase===5" class="help-block">Good Job!</p>
                                 </div>
                             </div>
                         </div>
@@ -62,8 +91,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <p>입력예시 : [["before1", "after2"], ["before2", "after2"], ..... ]</p>
-                    <textarea class="form-control" rows="12" ng-model="myWordsets" ng-keyup="getMyWordsets($event)">input your text</textarea>
+                    <p>입력예시 : [ ["before1", "after1"], ["before2", "after2"], ..... ]</p>
+                    <textarea class="form-control" rows="12" ng-model="myWordsets" ng-keyup="getMyWordsets($event)">{{ inputWordSets }}</textarea>
                     
                 </div>
                 
@@ -88,6 +117,22 @@
                 </div>
             </div>
         </div>
+
+    
+    <!-- ---------------------------------------------------------------- -->
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+        <script type="text/javascript" src="../publicAsset/javascript/exString.js"></script>
+        <script type="text/javascript" src="../publicAsset/javascript/bootstrap.file-input.js"></script>
+        <script>
+            // bootstrap file input : http://gregpike.net/demos/bootstrap-file-input/demo.html
+            $(document).ready(function(){$('input[type=file]').bootstrapFileInput();});
+        </script>
+            <!-- file-input design을 위한 js : http://gregpike.net/demos/bootstrap-file-input/demo.html -->
+        <script type="text/javascript" src="localAsset/Blob.js"></script> 
+            <!-- blob을 지원하지 않는 browser에서 작동하도록 해줌 : https://github.com/eligrey/Blob.js -->
+        <script type="text/javascript" src="localAsset/app.js"></script>
+    
     </body>
 </html>
-
