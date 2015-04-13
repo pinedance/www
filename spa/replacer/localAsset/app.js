@@ -40,12 +40,15 @@ myapp.controller('MainCtrl', function ($scope) {
         $scope.phase = 4;
     }
 
-    $scope.init = function(){
-    
-        $scope.phase = 1;
-        delete $scope.content;
-        delete $scope.converted_content;
-    
+    $scope.init = function(opt){
+        if(opt==='wordsets'){
+            delete $scope.myWordsets;delete $scope.wordsets;
+            $scope.phase = 2;
+        } else {
+            $scope.phase = 1;
+            $('.file-input-name').remove();
+            delete $scope.content;delete $scope.converted_content;
+        }
     }
     
     
