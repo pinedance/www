@@ -40,7 +40,15 @@ myapp.controller('MainCtrl', function ($scope) {
         $scope.phase = 4;
     }
 
-
+    $scope.init = function(){
+    
+        $scope.phase = 1;
+        delete $scope.content;
+        delete $scope.converted_content;
+    
+    }
+    
+    
 });
 
 myapp.directive('onReadFile', function ($parse) {
