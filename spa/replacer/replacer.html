@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="panel-body" ng-if="phase > 2">
                                     <input type='text' placeholder="output file name" ng-model="outputFilename" ng-keyup="chageFilename(outputFilename)"/>
-                                    <a class="btn btn-success" ng-click="saveFile()" ng-href="{{ url }}" download="result.txt">Save</a>
+                                    <a id="saveFile" class="btn btn-success" ng-click="saveFile()" ng-href="{{ url }}" download="result.txt">Save</a>
                                     <p ng-show="phase===5" class="help-block">Good Job!</p>
                                 </div>
                             </div>

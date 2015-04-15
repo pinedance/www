@@ -34,8 +34,10 @@ myapp.controller('MainCtrl', function ($scope) {
     $scope.getMyWordsets = function(event){
        // if(event.keyCode){
             $scope.wordsets = eval( $scope.myWordsets ); 
-            if( $scope.wordsets instanceof Array && $scope.content ){
+            if( $scope.wordsets instanceof Array && ($scope.wordsets.length > 0) && ($scope.wordsets[0].length === 2) && $scope.content ){
                 $scope.phase = 2;
+            } else {
+                $scope.phase = 1;
             }
        // }
     };
