@@ -12,55 +12,30 @@
         <header>
             <div class="jumbotron">
                 <div class="container">
-                    <h1>rePlacer</h1>
                     <div class="row">
-                        <div class="col-sm-10">
-                            <div class="alert alert-info" role="alert" ng-show="phase===1">
-                                <strong>
-                                    <span class="glyphicon glyphicon-open-file" aria-hidden="true"></span>
-                                    {{ inputFile = 'Select text file'}}
-                                </strong>
-                            </div>
-                            <div class="alert alert-info" role="alert" ng-show="phase===2">
-                                <strong>
-                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                {{ inputWordSets = 'Input word sets' }}
-                                </strong>
-                            </div>
-                            <div class="alert alert-info" role="alert" ng-show="phase===3">
-                                <strong>
-                                <span class="glyphicon glyphicon-retweet" aria-hidden="true"></span>
-                                {{ replaceFile = 'Push button to replace'}}
-                                </strong>
-                            </div>
-                            <div class="alert alert-info" role="alert" ng-show="phase===4">
-                                <strong>
-                                <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span>
-                                {{ downloadFile = 'Push button to save file'}}
-                                </strong>
-                            </div>
-                            <div class="alert alert-info" role="alert" ng-show="phase===5">
-                                <strong>
-                                <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
-                                {{ checkMsg = 'Check output file, please'}}
-                                </strong>
-                            </div>        
+                        <div class="col-sm-4">
+                            <h1>rePlacer</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <br/>
+                            <h1 ng-repeat="msg in msgs" ng-show="phase===$index">
+                                <small><span ng-class="msg.glyphicon" aria-hidden="true"></span> {{ msg.message }}</small>
+                            </h1>
                         </div>
                         <div class="col-sm-2">
-                            <button class="btn btn-primary btn-lg" ng-click="init('all')">Reset</button>
+                            <br /><br />
+                            <button class="btn btn-warning btn-lg" ng-click="init('all')">Reset</button>
                         </div>
                     </div>
-                </div>
 
-                <div class="container">
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">{{ inputFile }}</h3>
+                                    <h3 class="panel-title">{{ msgs[0].message }}</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <input type="file"  class="btn-info" title="Input your file" on-read-file="showContent($fileContent)">
+                                    <input type="file" id='fileInput' title="Input your file" on-read-file="showContent($fileContent)">
                                     <p ng-show="content" class="help-block">File content is uploaded</p>
                                 </div>
                             </div>
@@ -68,9 +43,9 @@
                         <div class="col-sm-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">{{ replaceFile }}</h3>
+                                    <h3 class="panel-title">{{ msgs[2].message }}</h3>
                                 </div>
-                                <div class="panel-body" ng-if="wordsets">
+                                <div class="panel-body" ng-if="phase > 1">
                                     <button class="btn btn-primary"  ng-click="convert()">rePlace</button>
                                     <p ng-show="converted_content" class="help-block">File content is replaced</p>
                                 </div>
@@ -79,10 +54,10 @@
                         <div class="col-sm-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">{{ downloadFile }}</h3>
+                                    <h3 class="panel-title">{{ msgs[3].message }}</h3>
                                 </div>
-                                <div class="panel-body" ng-if="content && converted_content">
-                                    <input type='text' placeholder="output file name" ng-model="outputFilename" />
+                                <div class="panel-body" ng-if="phase > 2">
+                                    <input type='text' placeholder="output file name" ng-model="outputFilename" ng-keyup="chageFilename(outputFilename)"/>
                                     <a class="btn btn-success" ng-click="saveFile()" ng-href="{{ url }}" download="result.txt">Save</a>
                                     <p ng-show="phase===5" class="help-block">Good Job!</p>
                                 </div>
@@ -100,7 +75,8 @@
                     <p>"..." 안은 ReExp로 인식합니다.</p>
                     
                     <textarea class="form-control" rows="12" ng-model="myWordsets" ng-keyup="getMyWordsets($event)">{{ inputWordSets }}</textarea>
-                    <button class="btn btn-primary" ng-click="init('wordsets')">Reset Wordsets</button>
+                    <br/>
+                    <button class="btn btn-default" ng-click="init('wordsets')">Reset Wordsets</button>
                 </div>
                 
                 <div class="col-sm-6">

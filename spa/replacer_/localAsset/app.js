@@ -4,15 +4,19 @@ var myapp = angular.module('myapp', []);
 
 myapp.controller('MainCtrl', function ($scope) {
     
-    $scope.phase = 1;
+    $scope.phase = 0;
     
     $scope.showContent = function($fileContent){
         $scope.content = $fileContent;
-        $scope.phase = 2;
+        if( $scope.wordsets instanceof Array && $scope.content ){
+            $scope.phase = 2;
+        } else {
+            $scope.phase = 1;
+        }
     };
 
     $scope.saveFile = function(){
-        $scope.phase = 5;
+        $scope.phase = 4;
         return true;
     };
     
@@ -23,13 +27,17 @@ myapp.controller('MainCtrl', function ($scope) {
     
 	}; //http://stackoverflow.com/questions/16514509/how-do-you-serve-a-file-for-download-with-angularjs-or-javascript
 
-    
+    $scope.chageFilename = function(newFilename){
+        $('#saveFile').attr('download', newFilename);
+    }
 
     $scope.getMyWordsets = function(event){
-        if(event.keyCode === 17 || event.keyCode === 13){
+       // if(event.keyCode){
             $scope.wordsets = eval( $scope.myWordsets ); 
-            $scope.phase = 3;
-        }
+            if( $scope.wordsets instanceof Array && $scope.content ){
+                $scope.phase = 2;
+            }
+       // }
     };
     
     $scope.convert = function(filename){
@@ -43,21 +51,45 @@ myapp.controller('MainCtrl', function ($scope) {
         $scope.converted_content = tmp;
         $scope.url = makeFileLink($scope.converted_content);
         
-        $scope.phase = 4;
+        $scope.phase = 3;
     }
 
     $scope.init = function(opt){
         if(opt==='wordsets'){
             delete $scope.myWordsets;delete $scope.wordsets;
-            $scope.phase = 2;
+            $scope.phase = $scope.content ? 1 : 0;
         } else {
-            $scope.phase = 1;
-            $('.file-input-name').remove();
+            // init input file 
+            $("input[type='file']").val(null);
             delete $scope.content;delete $scope.converted_content;
+            $scope.phase = 0;
+            
         }
     }
     
-    
+     $scope.msgs = [
+            {
+                glyphicon : "glyphicon glyphicon-open-file",
+                message : 'Select text file'
+            },
+            {
+                glyphicon : "glyphicon glyphicon-edit",
+                message : 'Input word sets'
+            },
+            {
+                glyphicon : "glyphicon glyphicon-retweet",
+                message : 'Push button to replace'
+            },
+            {
+                glyphicon : "glyphicon glyphicon-save-file",
+                message : 'Push button to save file'
+            },
+            {
+                glyphicon : "glyphicon glyphicon-check",
+                message : 'Check output file, please'
+            },
+        ]
+                        
 });
 
 /////////////////////////////////////////////////////////
@@ -75,6 +107,7 @@ myapp.directive('onReadFile', function ($parse) {
                 reader.onload = function(onLoadEvent) {
 					scope.$apply(function() {
 						fn(scope, {$fileContent:onLoadEvent.target.result});
+                        console.log("excuted")
 					});
 				};
 
@@ -88,4 +121,5 @@ myapp.directive('onReadFile', function ($parse) {
 
 myapp.config(['$compileProvider', function ($compileProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|tel|file|blob):/);
-}])
+}]) // unsafe 문제 해결
+//http://stackoverflow.com/questions/16514509/how-do-you-serve-a-file-for-download-with-angularjs-or-javascript
