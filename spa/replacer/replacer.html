@@ -24,42 +24,47 @@
                         </div>
                         <div class="col-sm-2">
                             <br /><br />
-                            <button class="btn btn-warning btn-lg" ng-click="init('all')">Reset</button>
+                            <button class="btn btn-danger btn-lg" ng-click="init('all')">Reset</button>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-sm-4">
-                            <div class="panel panel-default">
+                            <div class="panel panel-primary">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">{{ msgs[0].message }}</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <input type="file" id='fileInput' title="Input your file" on-read-file="showContent($fileContent)">
-                                    <p ng-show="content" class="help-block">File content is uploaded</p>
+                                    <input type="file" id='fileInput' title="Input your file" on-read-file="showContent($file)">
+                                    <br/>
+                                    <div ng-show="file" class="alert alert-info" role="alert">File content is uploaded(size : {{file.size}} )</div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <div class="panel panel-default">
+                            <div class="panel panel-primary">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">{{ msgs[2].message }}</h3>
                                 </div>
-                                <div class="panel-body" ng-if="phase > 1">
-                                    <button class="btn btn-primary"  ng-click="convert()">rePlace</button>
-                                    <p ng-show="converted_content" class="help-block">File content is replaced</p>
+                                <div class="panel-body">
+                                    <button ng-show="phase > 1" class="btn btn-warning"  ng-click="convert()">rePlace</button>
+                                    <br /><br />
+                                    <div ng-show="converted_content" class="alert alert-info" role="alert">File content is replaced</div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <div class="panel panel-default">
+                            <div class="panel panel-primary">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">{{ msgs[3].message }}</h3>
                                 </div>
-                                <div class="panel-body" ng-if="phase > 2">
+                                <div class="panel-body">
+                                    <div ng-show="phase > 2">
                                     <input type='text' placeholder="output file name" ng-model="outputFilename" ng-keyup="chageFilename(outputFilename)"/>
-                                    <a id="saveFile" class="btn btn-success" ng-click="saveFile()" ng-href="{{ url }}" download="result.txt">Save</a>
-                                    <p ng-show="phase===5" class="help-block">Good Job!</p>
+                                    <a id="saveFile" class="btn btn-warning" ng-click="saveFile()" ng-href="{{ url }}" download="result.txt">Save</a>
+                                    <br/><br />
+                                    <div ng-show="phase===4" class="alert alert-info" role="alert">Good Job!</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -70,18 +75,30 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-sm-6">
-                    <p>입력예시 : [ ["before1", "after1"], ["before2", "after2"], ..... ]</p>
-                    <p>"..." 안은 ReExp로 인식합니다.</p>
+                <div class="col-sm-4">
+                    <div class="panel panel-success">
+                      <div class="panel-heading">Text Content (less than 500)</div>
+                      <div class="panel-body" ng-show="file">{{ file.content.substring(0, 500) + "... ..." }}</div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">Word Sets</div>
+                        <div class="panel-body" >
+                            <textarea class="form-control" rows="12" ng-model="myWordsets" ng-keyup="getMyWordsets($event)">{{ inputWordSets }}</textarea>
+                            <br/>
+                            <button class="btn btn-default" ng-click="init('wordsets')">Reset Wordsets</button>
+                        </div>
+                    </div>
                     
-                    <textarea class="form-control" rows="12" ng-model="myWordsets" ng-keyup="getMyWordsets($event)">{{ inputWordSets }}</textarea>
-                    <br/>
-                    <button class="btn btn-default" ng-click="init('wordsets')">Reset Wordsets</button>
+                    <div class='well'>
+                        <p><span class="label label-default">입력예시</span><br/>[ ["before1", "after1"], ["before2", "after2"], ..... ]</p>
+                        <p><span class="label label-default">주의사항</span><br/>"..." 안은 ReExp로 인식합니다.</p>
+                    </div>
                 </div>
                 
-                <div class="col-sm-6">
-
-                    <div ng-if="myWordsets">
+                <div class="col-sm-4">
+                    <div class="panel panel-success">
                         <table class="table table-hover">
                             <thead>
                                 <tr>
@@ -89,7 +106,7 @@
                                     <th class="col-md-2">After</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody ng-if="myWordsets">
                                 <tr ng-repeat="wordset in wordsets" >
                                     <th class="col-md-2">{{wordset[0]}}</th>
                                     <th class="col-md-2">{{wordset[1]}}</th>
