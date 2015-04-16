@@ -6,9 +6,10 @@ myapp.controller('MainCtrl', function ($scope) {
     
     $scope.phase = 0;
     
-    $scope.showContent = function($fileContent){
-        $scope.content = $fileContent;
-        if( $scope.wordsets instanceof Array && $scope.content ){
+    $scope.showContent = function($file){
+        $scope.file = $file;
+        
+        if( $scope.wordsets instanceof Array && $scope.file.content ){
             $scope.phase = 2;
         } else {
             $scope.phase = 1;
@@ -34,7 +35,7 @@ myapp.controller('MainCtrl', function ($scope) {
     $scope.getMyWordsets = function(event){
        // if(event.keyCode){
             $scope.wordsets = eval( $scope.myWordsets ); 
-            if( $scope.wordsets instanceof Array && ($scope.wordsets.length > 0) && ($scope.wordsets[0].length === 2) && $scope.content ){
+            if( $scope.wordsets instanceof Array && ($scope.wordsets.length > 0) && ($scope.wordsets[0].length === 2) && $scope.file.content ){
                 $scope.phase = 2;
             } else {
                 $scope.phase = 1;
@@ -44,7 +45,7 @@ myapp.controller('MainCtrl', function ($scope) {
     
     $scope.convert = function(filename){
         
-        var tmp = $scope.content;
+        var tmp = $scope.file.content;
         var arr = $scope.wordsets;
 
         for(var i=0, a; a=arr[i]; i++){
@@ -59,11 +60,11 @@ myapp.controller('MainCtrl', function ($scope) {
     $scope.init = function(opt){
         if(opt==='wordsets'){
             delete $scope.myWordsets;delete $scope.wordsets;
-            $scope.phase = $scope.content ? 1 : 0;
+            $scope.phase = $scope.file ? 1 : 0;
         } else {
             // init input file 
             $("input[type='file']").val(null);
-            delete $scope.content;delete $scope.converted_content;
+            delete $scope.file;delete $scope.converted_content;
             $scope.phase = 0;
             
         }
@@ -105,15 +106,26 @@ myapp.directive('onReadFile', function ($parse) {
             
 			element.on('change', function(onChangeEvent) {
                 
+                var file = (onChangeEvent.srcElement || onChangeEvent.target).files[0];
+                
 				var reader = new FileReader();
+                
                 reader.onload = function(onLoadEvent) {
+                    
+                    var myfile = {
+                        content: onLoadEvent.target.result,
+                        name: file.name,
+                        size: file.size,
+                        lastModifiedDate: file.lastModifiedDate
+                    }
+                    
 					scope.$apply(function() {
-						fn(scope, {$fileContent:onLoadEvent.target.result});
-                        console.log("excuted")
+						fn(scope, { $file: myfile });
 					});
 				};
 
-				reader.readAsText((onChangeEvent.srcElement || onChangeEvent.target).files[0]);
+				reader.readAsText( file );
+                
 			});
 		}
 	};
