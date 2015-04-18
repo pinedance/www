@@ -88,3 +88,16 @@ Array.prototype.suffle = function(){
     for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
 } //[ref](http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript)
+
+Array.prototype.clone = function() {
+	return this.slice(0);
+}; //http://davidwalsh.name/javascript-clone-array
+
+
+// remove element by index
+Array.prototype.remove = function(from, to) {
+  var rest = this.slice((to || from) + 1 || this.length);
+  this.length = from < 0 ? this.length + from : from;
+  return this.push.apply(this, rest);
+}; // http://stackoverflow.com/questions/500606/javascript-array-delete-elements
+
