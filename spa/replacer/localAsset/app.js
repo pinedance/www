@@ -35,17 +35,21 @@ myapp.controller('MainCtrl', function ($scope) {
     
     function validateArray( arr ){
         
+        var pairs = 0;
         var _arr = _.zip.apply( this, arr );
         var its = _.intersection( _arr[0], _arr[1] ); 
         var warning = [];
+        console.log("intersection element : ") ; console.log(its);
         
         for(var i=0, e; e=its[i]; i++){
             var beforeIdx = _arr[0].indexOf(e);
             var afterIdx = _arr[1].indexOf(e);
+
             if ( beforeIdx < afterIdx ){
                 warning.push( e );
-                arr[beforeIdx][3] = i;
-                arr[afterIdx][3] = i;
+                pairs += 1;
+                arr[beforeIdx][3] = pairs;
+                arr[afterIdx][3] = pairs;
             }
         }
         

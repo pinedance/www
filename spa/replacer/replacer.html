@@ -116,7 +116,7 @@
                             </thead>
                             <tbody ng-if="myWordsets">
                                 <tr ng-repeat="wordset in wordsets" >
-                                    <th ng-class="{warning: wordset[3]}">{{wordset[3] || ""}}</th>
+                                    <th ng-class="{warning: wordset[3]}">{{wordset[3]}}</th>
                                     <th>{{wordset[0]}}</th>
                                     <th>{{wordset[1]}}</th>
                                     <th ng-class="{info: wordset[2]===0}">{{wordset[2]}}</th>
