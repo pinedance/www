@@ -22,6 +22,13 @@ myapp.controller('MainCtrl', function ($scope) {
         return true;
     };
     
+    function replaceChr(chrSets, myText){
+        _.each( chrSets, function(elem){
+            myText = myText.gsub( elem[0], elem[1] )     
+        })    
+        return myText;
+    }
+    
     function makeFileLink(content) {
     
         var blob = new Blob([content], { type:"text;charset=utf-8;" });
@@ -65,21 +72,19 @@ myapp.controller('MainCtrl', function ($scope) {
     }
     
     $scope.getMyWordsets = function(event){
-       // if(event.keyCode){
-            $scope.wordsets = eval( $scope.myWordsets );
-            
+            $scope.wordsets = eval( replaceChr( chrCode.dup, $scope.myWordsets ) ); // 이중코드 병합
+        
             if( phase2validate() && validateArray( $scope.wordsets ) && $scope.file){
                 $scope.phase = 2;
             } else {
                 $scope.phase = 1;
             }
-       // }
     };
     
     $scope.convert = function(filename){
         
         $scope.info.replaceTimes = 0;
-        var tmp = $scope.file.content;
+        var tmp = replaceChr( chrCode.dup, $scope.file.content ); // 이중코드 병합
         var arr = $scope.wordsets;
 
         for(var i=0, a; a=arr[i]; i++){
