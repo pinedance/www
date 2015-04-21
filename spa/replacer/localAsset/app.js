@@ -2,10 +2,22 @@ var myapp = angular.module('myapp', []);
 
 //////////////////////////////////////////////////////
 
-myapp.controller('MainCtrl', function ($scope) {
+myapp.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
     
     $scope.phase = 0;
     $scope.info = {};
+    var chrCode = {};
+
+    (function loadChrDup(){
+        $http.get('localAsset/chrLibDupCode.dat').
+              success(function(data, status, headers, config) {
+                console.log("loadChrDup Success!");
+                chrCode.dup = eval(data);
+              }).
+              error(function(data, status, headers, config) {
+                console.log("loadChrDup fail!");
+              });
+    })();
     
     $scope.showContent = function($file){
         $scope.file = $file;
@@ -21,7 +33,7 @@ myapp.controller('MainCtrl', function ($scope) {
         $scope.phase = 4;
         return true;
     };
-    
+
     function replaceChr(chrSets, myText){
         _.each( chrSets, function(elem){
             myText = myText.gsub( elem[0], elem[1] )     
@@ -141,7 +153,7 @@ myapp.controller('MainCtrl', function ($scope) {
             },
         ]
                         
-});
+}]);
 
 /////////////////////////////////////////////////////////
 
