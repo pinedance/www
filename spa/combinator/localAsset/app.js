@@ -19,7 +19,7 @@ myapp.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
     })();
     
     (function loadPronounceSet(){
-        $http.get('../publicAsset/data/chrLibPronounceSet.json').
+        $http.get('https://cdn.rawgit.com/KMOnGoing/KMOnGoing.github.io/master/lib/chrLibPronounceSet.json').
               success(function(dt, status, headers, config) {
                 console.log("load Success!");
                 var tmp = JSON.parse( JSON.stringify(dt).replaceChr(data.dupCode) ); // 이중코드 병합 require exString, underscore.js
@@ -51,8 +51,6 @@ myapp.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
     
     $scope.combinate = function(){
         
-        console.log(data.dupCode)
-        console.log(data.pronounceSet)
         data.clearWords = $scope.rawWords.replaceChr(data.dupCode);  // 이중코드 병합 require exString, underscore.js
                     
         data.myWords = _.compact( data.clearWords.split(/\s+/) );
