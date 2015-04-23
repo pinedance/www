@@ -9,3 +9,11 @@ String.prototype.matchCount = function(bf){
     var result = this.match(all_bf)
     return result ? this.match(all_bf).length : 0;
 }; 
+
+String.prototype.replaceChr = function(chrSets){
+    var myText = this;
+    _.each( chrSets, function(elem){
+        myText = myText.gsub( elem[0], elem[1] )     
+    })    
+    return myText;
+} // require underscore.js

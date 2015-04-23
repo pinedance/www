@@ -9,7 +9,7 @@ myapp.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
     var chrCode = {};
 
     (function loadChrDup(){
-        $http.get('localAsset/chrLibDupCode.dat').
+        $http.get('../publicAsset/data/chrLibDupCode.dat').
               success(function(data, status, headers, config) {
                 console.log("loadChrDup Success!");
                 chrCode.dup = eval(data);
@@ -34,13 +34,6 @@ myapp.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
         return true;
     };
 
-    function replaceChr(chrSets, myText){
-        _.each( chrSets, function(elem){
-            myText = myText.gsub( elem[0], elem[1] )     
-        })    
-        return myText;
-    }
-    
     function makeFileLink(content) {
     
         var blob = new Blob([content], { type:"text;charset=utf-8;" });
@@ -84,7 +77,7 @@ myapp.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
     }
     
     $scope.getMyWordsets = function(event){
-            $scope.wordsets = eval( replaceChr( chrCode.dup, $scope.myWordsets ) ); // 이중코드 병합
+            $scope.wordsets = eval( $scope.myWordsets.replaceChr(chrCode.dup) ); // 이중코드 병합 require exString, underscore.js
         
             if( phase2validate() && validateArray( $scope.wordsets ) && $scope.file){
                 $scope.phase = 2;
@@ -96,7 +89,7 @@ myapp.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
     $scope.convert = function(filename){
         
         $scope.info.replaceTimes = 0;
-        var tmp = replaceChr( chrCode.dup, $scope.file.content ); // 이중코드 병합
+        var tmp = $scope.file.content.replaceChr(chrCode.dup); // 이중코드 병합 require exString, underscore.js
         var arr = $scope.wordsets;
 
         for(var i=0, a; a=arr[i]; i++){
