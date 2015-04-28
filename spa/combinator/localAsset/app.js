@@ -52,7 +52,6 @@ myapp.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
     $scope.combinate = function(){
         
         data.clearWords = $scope.rawWords.replaceChr(data.dupCode);  // 이중코드 병합 require exString, underscore.js
-        console.log(data.pronounceSet)   ///////
         data.myWords = _.compact( data.clearWords.split(/\s+/) );
         
         data.ourWords = _.map(data.myWords, function(word){ 
