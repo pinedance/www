@@ -9,7 +9,7 @@ myapp.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
     var chrCode = {};
 
     (function loadChrDup(){
-        $http.get('../publicAsset/data/chrLibDupCode.dat').
+        $http.get('http://mytoolbox.herokuapp.com/showdict/duplicatedCode').
               success(function(data, status, headers, config) {
                 console.log("loadChrDup Success!");
                 chrCode.dup = eval(data);

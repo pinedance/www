@@ -8,7 +8,7 @@ myapp.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
     var data = {};
 
     (function loadDupCode(){
-        $http.get('../publicAsset/data/chrLibDupCode.dat').
+        $http.get('http://mytoolbox.herokuapp.com/showdict/duplicatedCode').
               success(function(dt, status, headers, config) {
                 console.log("load Success!");
                 data.dupCode = eval(dt);
