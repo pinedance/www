@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>KMOnGoing</title>
+
+    <link href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' rel='stylesheet' />
+    <link href="assets/css/simple-sidebar.css" rel="stylesheet">
+    <!-- markdown css from stackedit -->
+    <link href="https://stackedit.io/res-min/themes/base.css" rel='stylesheet' /> 
+
+    <!--  default js     -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    
+    <!--  angular js     -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular-route.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular-sanitize.min.js"></script>
+        
+    <!--  markdown rendering -->
+    <script src='assets/javascript/marked.min.js'></script>
+    
+    <!--  custom js -->
+    <script src='assets/javascript/showMD.js'></script>
+
+</head>
+
+<body ng-app="showMD">
+    
+    <div id="wrapper" ng-class="{toggled: !toggle}" ng-controller="mainCtrl"> 
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper" >
+            <ul class="sidebar-nav" ng-bind-html="file.html"></ul>
+         </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper"  >
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <a class="btn btn-default" ng-click="toggle=!toggle">Toggle Menu</a>
+                        <a ng-class="{'btn btn-success':init.contentsCollapsed,'btn btn-default':!init.contentsCollapsed}" ng-click="showTitles()">Show Contents</a>
+                        <a ng-class="{'btn btn-success':init.toggled,'btn btn-default':!init.toggled}" ng-click="hideExamples()">Toggle Example</a>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-sm-11">
+
+                        <ng-view></ng-view>
+    
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+
+    
+</body>
+
+</html>
