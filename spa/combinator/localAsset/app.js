@@ -19,7 +19,7 @@ myapp.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
     })();
     
     (function loadPronounceSet(){
-        $http.get('https://rawgit.com/KMOnGoing/KMOnGoing.github.io/master/lib/chrLibPronounceSet.json').
+        $http.get('https://rawgit.com/KMOnGoing/KMOnGoing.github.io/master/data/chrCode/chrLibPronounceSet.json').
               success(function(dt, status, headers, config) {
                 console.log("load Success!");
                 var tmp = JSON.parse( JSON.stringify(dt).replaceChr(data.dupCode) ); // 이중코드 병합 require exString, underscore.js
