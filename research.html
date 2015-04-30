@@ -66,7 +66,7 @@
                             <h1>Research Papers</h1>
                             <p>그간 발표한 논문들입니다. </p>
                             <p>인용은 거의 안되는 모양이네요. </p>
-                            <p>그래도 쓸 때에는 나름 노력한 거에요. 나중에 읽어보면 별로라도... </p>
+                            <p>그래도 쓸 때에는 나름 노력한 거에요. </p>
                         </div>
                         
                         <div ng-repeat="papers in myPapers" id="{{'year' + papers.year}}">
@@ -110,40 +110,35 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
-    <script src="./myPaperList.js"></script>
+    <script src="./data/researchData.js"></script>
     
     <!-- Menu Toggle Script -->
     <script>
         
 	(function(){
 		var app = angular.module('papers', []);
-		app.controller('papersCtrl', ['$scope',
-			function($scope) {
-					
-                /// menu
-                
-                $scope.toggle = function(){
-                    $scope.toggled = !$scope.toggled;
-                }
-                
-                $scope.chronicles = function(){
-					var thisYear = new Date().getFullYear();
-					var startYear = 2004;
-                    var chronicles = [];
-                   
-                   for(i=startYear; i <= thisYear ; i++){
-                        chronicles.push(i.toString());
-                    }
-                   return chronicles;
-				}
+		app.controller('papersCtrl', ['$scope', function($scope) {
+				
+            /// menu
+            $scope.toggle = function(){
+                $scope.toggled = !$scope.toggled;
+            }
+            
+            $scope.chronicles = function(){
+				var thisYear = new Date().getFullYear();
+				var startYear = 2004;
+                var chronicles = [];
                
-				$scope.myPapers = myPapers;
-                
-                             
-                
-                
-			}]);
-		})();
+               for(i=startYear; i <= thisYear ; i++){
+                    chronicles.push(i.toString());
+                }
+               return chronicles;
+			}
+           
+			$scope.myPapers = myPapers;
+
+		}]);
+	})();
         
     </script>
     

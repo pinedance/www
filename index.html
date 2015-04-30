@@ -168,40 +168,39 @@
     <script src="./public/js/grayscale.js"></script>
 
 	<script>
-		(function(){
-		var app = angular.module('index', []);
-		app.controller('indexCtrl', ['$scope',
-			function($scope) {
+	(function(){
+	var app = angular.module('index', []);
+	app.controller('indexCtrl', ['$scope', function($scope) {
+				
+		////copyright
+		$scope.copyrightYear = function(){
+			var thisYear = new Date().getFullYear();
+			var startYear = 2015;
+			if (thisYear > startYear) { 
+				return(startYear + '-' + thisYear);
+			} else {
+				return(thisYear);
+			}
+		}
+
+		$scope.lists = [				
+			{
+				"ref":"research",
+				"title":"Research",
+				"desc": "research paper etc",
+				"address" : "research.html"
+			}, 
+			{
+				"ref":"showcase",
+				"title":"Showcase",
+				"desc": "^^;",
+				"address" : "showcase.html"
+			}			
+		]
+				
 					
-				////copyright
-				$scope.copyrightYear = function(){
-					var thisYear = new Date().getFullYear();
-					var startYear = 2015;
-					if (thisYear > startYear) { 
-						return(startYear + '-' + thisYear);
-					} else {
-						return(thisYear);
-					}
-				}
-		
-				$scope.lists = [				
-					{
-						"ref":"showcase",
-						"title":"Showcase",
-						"desc": "^^;",
-						"address" : "./showcase/showcase.html"
-					}, 
-					{
-						"ref":"research",
-						"title":"Research",
-						"desc": "research paper etc",
-						"address" : "./research/research.html"
-					}			
-				]
-					
-						
-			}]);
-		})();
+		}]);
+	})();
 		
 	</script>
 
