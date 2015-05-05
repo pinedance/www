@@ -45,7 +45,7 @@
             $scope.newNamedPlaylist = $scope.pplaylist;
         }
         
-         $scope.renamePlayList = function(event){
+        $scope.renamePlayList = function(event){
             if(event.keyCode != 13){return};
             if($scope.newNamedPlaylist == ""){return};
             if($scope.newNamedPlaylist == $scope.pplaylist){return}; 
