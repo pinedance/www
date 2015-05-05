@@ -18,40 +18,52 @@
         
 </head>
 
-<body ng-app="myDemo">
+<body ng-app="myDemo" ng-controllder="demoCtrl">
     
-    <div class='well'>
         <ng-view></ng-view>
-    </div>
     
-    <script>
-    (function(){
-        var app = angular.module('myDemo', ['ngRoute', 'ngSanitize']);
-        
-        app.controller('mainCtrl', ['$scope', '$route', function($scope, $route) {
-            
-        }])
-        
-        app.controller('demoCtrl', ['$scope', '$route', function($scope, $route) {
-            
-        }])
-        
-        app.config(['$routeProvider', function($routeProvider) {
-            $routeProvider.
-            when('/HF-IFF', {
-                templateUrl: '/data/demo/HF-IFF.html',
-                controller: 'demoCtrl'
-            }).
-            otherwise({
-                redirectTo: '/'        
-            });
-        
-        }]);
-    }());
+<script>
+(function(){
+    var app = angular.module('myDemo', ['ngRoute', 'ngSanitize']);
 
+    app.controller('demoCtrl', ['$scope', '$route', '$routeParams', '$window', 'address', function($scope, $route, $routeParams, $window, address) {
+
+        $scope.$on('$routeChangeSuccess', function () {
+             $window.location.href = address.get()[$routeParams.title];
+        });
+    }])
+
+    app.controller('demoListCtrl', ['$scope', 'address', function($scope, address){
         
-        
-    </script>
+        $scope.address = address.get();
+        console.log($scope.address)
+    }]);
+    
+    app.config(['$routeProvider', function($routeProvider) { $routeProvider
+        .when('/:title', {
+            template: '',
+            controller: 'demoCtrl'
+        })
+        .otherwise({
+            templateUrl: 'data/demoList.html',
+            controller: 'demoListCtrl'
+        });
+
+    }]);
+
+    app.service('address', function(){
+        this.get = function(){
+        return {
+            // list of demo
+            'HF-IFF' : 'http://115.68.184.81:3838/2015CGAnalysis/HF-IFF-demo/'
+
+        }}
+
+    })
+
+}()); // outter function
+
+</script>
     
 </body>
 
