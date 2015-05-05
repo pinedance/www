@@ -33,10 +33,10 @@
         });
     }])
 
-    app.controller('demoListCtrl', ['$scope', 'address', function($scope, address){
+    app.controller('demoListCtrl', ['$scope', '$location', 'address', function($scope, $location, address){
         
         $scope.address = address.get();
-        console.log($scope.address)
+        $scope.here = $location.absUrl();
     }]);
     
     app.config(['$routeProvider', function($routeProvider) { $routeProvider

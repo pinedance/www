@@ -1,3 +1,24 @@
-<h1> Demo page</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
 
-<a ng-href="{{'#/' + key}}" target='_blank' ng-repeat='(key, value) in address'><p>{{key}}</p></a>
+            <div class="jumbotron">
+                <h1> Demo page</h1>
+            </div>
+            
+                <ul class="list-group">
+                      <li class="list-group-item" ng-repeat='(title, link) in address'>
+                          Junho Oh. {{title}} Demo App [Internet]. Available from: <a ng-href="{{'#/' + title}}" target='_blank' >{{ here + '#/' + title}}</a>
+
+                      </li>
+
+                </ul>
+        </div>
+    </div>
+</div>
+
+
+
+    
+
+
