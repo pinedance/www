@@ -15,13 +15,13 @@ app.controller('MainCtrl', ["$scope", "$firebase", function ($scope, $firebase) 
     var youtubePlayer;
     var isYoutubePlayerReady = false;
     
-    (function onYouTubeIframeAPIReady() {
+    function onYouTubeIframeAPIReady() {
         youtubePlayer = new YT.Player('youtube1', {
           events: {
             'onReady': onPlayerReady
           }
         });
-     }());
+     };
      
   function onPlayerReady() {
     isYoutubePlayerReady = true;
@@ -186,7 +186,6 @@ app.controller('MainCtrl', ["$scope", "$firebase", function ($scope, $firebase) 
     };
     
     $scope.playThis = function(index){
-        console.log(index);
         $scope.ppsong = $scope.songs[index];
         $scope.songs.setnow(index);
         $scope.play();
@@ -194,6 +193,7 @@ app.controller('MainCtrl', ["$scope", "$firebase", function ($scope, $firebase) 
 
     $scope.play = function(){
         if($scope.ppsong.type == "youtube"){
+            onYouTubeIframeAPIReady();
             playYoutubeVideo();
         } else {
             $scope.mp3Player.playMp3();
