@@ -14,14 +14,30 @@
 			<div class="container">
                 <div class="row">
                     <div class="col-sm-6 col-xs-8">
-                        <h1>goFang</h1>
-                        <p>Find Your Own Formulas !!!</p>
-                        <p><a class="btn btn-primary btn-lg" href="#" role="button" ng-click="resetForms()">Reset</a></p>
+                        <h1>goFang <button class="btn btn-primary btn-lg" ng-click="resetForms()">Reset</button></h1>
+                        <p>Find Your Own Formulas !!! </p>
                     </div>
                     <div class="col-sm-6 col-xs-4">
                         <img src="http://livedoor.blogimg.jp/bakusei/imgs/c/a/cacbdc7e.jpg" alt="" width="160px" class="pull-right img-responsive img-rounded">
                     </div>
                 </div>
+				<div class="row">
+					<div class="col-sm-6">
+						<tags-input ng-model="inHerbs" placeholder="포함하는 본초" min-length=1 display-property="herbs" on-tag-added="find()" on-tag-removed="find()">
+							<auto-complete source="loadItems($query, 'herbs')" min-length=1 debounce-delay=50></auto-complete>
+						</tags-input>
+						<tags-input ng-model="outHerbs" placeholder="제외하는 본초" min-length=1 display-property="herbs" on-tag-added="find()" on-tag-removed="find()">
+							<auto-complete source="loadItems($query, 'herbs')" min-length=1 debounce-delay=50></auto-complete>
+						</tags-input>
+					</div>
+					<div class="col-sm-6">
+						<tags-input ng-model="inSymp" placeholder="찾는 증상" min-length=1 display-property="symptoms" on-tag-added="findHerbsymp()" on-tag-removed="findHerbsymp()">
+							<auto-complete source="loadItems($query, 'symptoms')" min-length=1 debounce-delay=50></auto-complete>
+						</tags-input>
+						<button class="btn btn-warning" ng-repeat="symp in symptoms">{{symp}}</button>
+						<button class="btn btn-success" ng-repeat="hbsy in herbssymptoms" ng-click="addHerb(hbsy)">{{hbsy}}</button>
+					</div>
+				</div>
             </div>
 		</div>
 		</header>
@@ -29,19 +45,6 @@
 		<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-6">
-				<tags-input ng-model="inHerbs" placeholder="포함하는 본초" min-length=1 display-property="herb" on-tag-added="find()" on-tag-removed="find()">
-					<auto-complete source="loadItems($query)" min-length=1 debounce-delay=50></auto-complete>
-				</tags-input>
-			</div>
-			<div class="col-sm-6">
-				<tags-input ng-model="outHerbs" placeholder="제외하는 본초" min-length=1 display-property="herb" on-tag-added="find()" on-tag-removed="find()">
-					<auto-complete source="loadItems($query)" min-length=1 debounce-delay=50></auto-complete>
-				</tags-input>
-				<p>{{test()}}</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-6" ng-show="detail">
 				<div class="well">
 					<p>처방명 : {{detail.txName}}</p>
 					<p>방극 : {{detail.txFangi}}<p>
@@ -57,14 +60,11 @@
 	  		</div>
 		</div>
 
-
-
-        
 		</div><!--container-fluid-->
         
 		<footer class="footer">
 			<div class="container">
-				<p class="text-muted">Copyright &copy; {{copyrightYear()}} Junho. <span  class="text-center">Contact or Report issue : <a href='https://github.com/pinedance/pinedance.github.io/issues' target='_blank'><kbd>Here</kbd></a></span></p>
+				<p class="text-muted">Copyright &copy; {{copyrightYear}} Junho. <span  class="text-center">Contact or Report issue : <a href='https://github.com/pinedance/pinedance.github.io/issues' target='_blank'><kbd>Here</kbd></a></span></p>
 				<small class="text-muted">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</small>
 			</div>
 		</footer>
