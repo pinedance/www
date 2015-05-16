@@ -259,7 +259,7 @@ app.controller('mainCtrl', ['$scope', "$firebase", "$interval", function($scope,
         if (match && match[7].length==11){
             return match[7]
         }else{
-            return "ERROR_URL_ID"
+            return "***********"
         }
     }
 
