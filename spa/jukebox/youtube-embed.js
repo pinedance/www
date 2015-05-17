@@ -26,7 +26,7 @@ youtube.directive('youtube', ['$window', function($window){
             
             function onPlayerReady(event) {
                 scope.$emit('onPlayerReady', {
-                    length: event.target.getDuration()
+                    target: event.target
                 });
             }
 
