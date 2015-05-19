@@ -10,7 +10,7 @@ app.controller('mainCtrl', ['$scope', '$http', function($scope, $http){
             serial: myput
         }
         
-        $http.post('myapibox.herokuapp.com/auth', data ).
+        $http.post('http://myapibox.herokuapp.com/auth', data ).
           success(function(data, status, headers, config) {
             console.log(data)
 
