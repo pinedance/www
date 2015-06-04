@@ -6,34 +6,45 @@ app.filter('secondsToDateTime', [ function() {
     };
 }]) // http://stackoverflow.com/questions/28394572/angularjs-seconds-to-time-filter
 
-app.controller('mainCtrl', ['$scope', "$firebase", "$interval", "$http", "$cookieStore", "prompt", "getToday",
-function($scope, $firebase, $interval, $http, $cookieStore, prompt, getToday){
+app.controller('mainCtrl', ['$scope', "$firebase", "$interval", "$http", "$window", "$cookieStore", "prompt",
+function($scope, $firebase, $interval, $http, $window, $cookieStore, prompt){
     
-    $scope.logout = function(){ $cookieStore.remove('login') ; $scope.loginState = $cookieStore.get('login') ; console.log($cookieStore.get('login'))}
+    $scope.logout = function(){ 
+        $cookieStore.remove('login') ; 
+        $scope.loginState = $cookieStore.get('login') ; 
+        console.log($cookieStore.get('login'))
+        $window.location.reload();  // http://stackoverflow.com/questions/21885518/angularjs-reload-page
+    }
 
-    if(!$cookieStore.get('login')){
-        // login session
-        (function(){
+    function loginSession(value){
             prompt({
                     title: 'login',
                     message: 'input password',
                     input: true,
                     label: 'answer?',
-                    value: ''
+                    value: value
             }).then(function(answer){
                 $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
                     $http.post('http://myapibox.herokuapp.com/auth', {serial: answer} ).
                       success(function(data, status, headers, config) {
                         console.log(data)
-                        $cookieStore.put('login', true)
-                        $scope.loginState = $cookieStore.get('login'); 
-                        linkFirebase()
+                        if(data.auth){
+                            $cookieStore.put('login', true)
+                            $scope.loginState = $cookieStore.get('login'); 
+                            linkFirebase()
+                        } else {
+                            loginSession('wrong password')
+                        }
                 }).
                       error(function(data, status, headers, config) {
                         console.log(data)
                 });        
-            });  
-        }())
+            })
+        }
+
+    if(!$cookieStore.get('login')){
+        // login session
+        loginSession()
     } else {
         $scope.loginState = $cookieStore.get('login'); 
         linkFirebase()
