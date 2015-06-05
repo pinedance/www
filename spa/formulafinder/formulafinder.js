@@ -26,7 +26,7 @@
 			var tmp_in = $scope.inHerbs.map(function(item) { return item.herbs });
 			var tmp_out = $scope.outHerbs.map(function(item) { return item.herbs });
 			
-			if ((tmp_in.length + tmp_out.length)==0){
+			if ( (tmp_in.length + tmp_out.length)==0 ){
 				$scope.results = [];
 			} else {
 				var handler = Object.keys(data.formulas);
@@ -63,8 +63,9 @@
 		};
 
 		$scope.addHerb = function(hb){
+			var included = $scope.inHerbs.filter(function(herb){return herb.herbs == hb}) // 이미 있다면 넣지 않음 (ng-repeat 오류 회피)
+			if (included.length > 0){ return }
 			$scope.inHerbs.push( {herbs: hb} );
-			console.log($scope.inHerbs)
 			$scope.find()
 		};
 		
