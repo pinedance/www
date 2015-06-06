@@ -56,10 +56,10 @@ var myShowCaseApp = [
 		},
 	"right": 
 		{
-			"direct":"http://kmongoing.github.io/sop/#/intro",
+			"direct":"",
 			"img":default_img,
-			"title":"mkShow",
-			"desc":"markdown file을 rendering"
+			"title":"준비중",
+			"desc":"준비중"
 		}
 	}
 	
