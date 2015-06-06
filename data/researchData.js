@@ -523,7 +523,7 @@ var myPapers = [
             },
             {
                 "year":"2014",
-                "title":"한계층적 군집분석(hierarchical clustering)을 통한 침구자생경(鍼灸資生經) 경혈 선택 요인 분석",
+                "title":"계층적 군집분석(hierarchical clustering)을 통한 침구자생경(鍼灸資生經) 경혈 선택 요인 분석",
                 "linkAddress":"http://scholar.ndsl.kr/schDetail.do?cn=JAKO201426247306393",
                 "title2":"Study on quantization of Korean medicine terminology concept - for disease symptom terms of Compilation of Formulas and Medicinals Addendum -",
                 "journal":"대전대학교 한의학연구소 논문집",
