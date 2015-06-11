@@ -1,8 +1,8 @@
-var myapp = angular.module('myapp', []);
+var myapp = angular.module('myapp', ['underscore']);
 
 //////////////////////////////////////////////////////
 
-myapp.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
+myapp.controller('MainCtrl', ['$scope', '$http', '_', function ($scope, $http, _) {
     
     $scope.phase = 0;
     $scope.info = {};
@@ -42,7 +42,7 @@ myapp.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
 	}; //http://stackoverflow.com/questions/16514509/how-do-you-serve-a-file-for-download-with-angularjs-or-javascript
 
     $scope.chageFilename = function(newFilename){
-        $('#saveFile').attr('download', newFilename);
+        angular.element('#saveFile').attr('download', newFilename);
     }
     
     function validateArray( arr ){
@@ -51,8 +51,7 @@ myapp.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
         var _arr = _.zip.apply( this, arr );
         var its = _.intersection( _arr[0], _arr[1] ); 
         var warning = [];
-        console.log("intersection element : ") ; console.log(its);
-        
+
         for(var i=0, e; e=its[i]; i++){
             var beforeIdx = _arr[0].indexOf(e);
             var afterIdx = _arr[1].indexOf(e);
@@ -94,10 +93,9 @@ myapp.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
 
         for(var i=0, a; a=arr[i]; i++){
             a[2] = 0;
-            a[2] = tmp.matchCount(a[0]);  //exString            
-            tmp = tmp.gsub(a[0], a[1]);
+            a[2] = tmp.matchCount(a[0]);  // exString            
+            tmp = tmp.gsub(a[0], a[1]);  // exString 
 
-            console.log(a[0] + ": " + a[2])
             $scope.info.replaceTimes += a[2];
         }
         
@@ -116,7 +114,7 @@ myapp.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
             $scope.phase = $scope.file ? 1 : 0;
         } else {
             // init input file 
-            $("input[type='file']").val(null);
+            angular.element("input[type='file']").val(null);
             delete $scope.file;
             $scope.getMyWordsets();
             $scope.phase = 0;
