@@ -76,13 +76,22 @@ myapp.controller('MainCtrl', ['$scope', '$http', '_', function ($scope, $http, _
     }
     
     $scope.getMyWordsets = function(event){
-            $scope.wordsets = eval( $scope.myWordsets.replaceChr(chrCode.dup) ); // 이중코드 병합 require exString, underscore.js
         
-            if( phase2validate() && validateArray( $scope.wordsets ) && $scope.file){
-                $scope.phase = 2;
-            } else {
-                $scope.phase = 1;
-            }
+        var _tmpWordsets = $scope.myWordsets.replaceChr(chrCode.dup).split(/\r\n|\n/)  // 이중코드 병합 require exString, underscore.js
+        console.log()
+        var _tmp = _.filter( _tmpWordsets, function(elm){ 
+            return  ( elm.indexOf("#") !== 0 ) &&       // 주석줄이 아닐 것
+                    ( !(/^\s*$/).test(elm) ) &&     // 빈줄이 아닐 것
+                    ( elm.split(/[ \t]*#/)[0].split(/\t/).length === 2) // before after 2개 일 것
+        } ) 
+        
+        $scope.wordsets = _.map( _tmp, function(elm){ return elm.split(/[ \t]*#/)[0].split(/\t/) } );
+
+        if( phase2validate() && validateArray( $scope.wordsets ) && $scope.file){
+            $scope.phase = 2;
+        } else {
+            $scope.phase = 1;
+        }
     };
     
     $scope.convert = function(filename){
