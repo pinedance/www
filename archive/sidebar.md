@@ -1,18 +1,18 @@
 <li class="sidebar-brand">
-    <a href="index.html#/intro">
-        Main
+    <a href="#/intro">
+        <i class="fa fa-home"></i> Main
     </a>
 </li>
 
 
 <li class="sidebar-brand">
-    <a href="#">
-        비망록
+    <a href="#/list">
+        List
     </a>
 </li>
 
 <li>
-    <a href="index.html#/softcover설치">softcover 설치</a>
+    <a href="#/softcover설치">softcover 설치</a>
 </li>
 
 <li class="sidebar-brand">
@@ -21,7 +21,7 @@
     </a>
 </li>
 <li>
-    <a href="index.html#/copyright">Copyright</a>
+    <a href="#/copyright">Copyright</a>
 </li>
 <li>
     <a href="https://github.com/KMOnGoing/KMOnGoing.github.io/issues" target='_blank'>issue report</a>

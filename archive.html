@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="showMD">
 
 <head>
 
@@ -10,9 +10,13 @@
     <title>mdShow</title>
 
     <link href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' rel='stylesheet' />
-    <link href="assets/css/simple-sidebar.css" rel="stylesheet">
+    <link href="public/mdShow/simple-sidebar.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    
     <!-- markdown css from stackedit -->
-    <link href="https://stackedit.io/res-min/themes/base.css" rel='stylesheet' /> 
+    <!--<link href="//stackedit.io/res-min/themes/base.css" rel='stylesheet' /> -->
+    <!--https://github.com/adam-p/markdown-here-->
+    <link href="//rawgit.com/adam-p/markdown-here/master/src/common/default.css" rel='stylesheet' /> 
 
     <!--  default js     -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -24,16 +28,17 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular-sanitize.min.js"></script>
         
     <!--  markdown rendering -->
-    <script src='assets/javascript/marked.min.js'></script>
+    <script src='public/mdShow/marked.min.js'></script>
+    <script src='public/mdShow/ng-marked.js'></script>
     
     <!--  custom js -->
-    <script src='assets/javascript/showMD.js'></script>
+    <script src='public/mdShow/showMD.js'></script>
 
 </head>
 
-<body ng-app="showMD">
+<body ng-controller="showMdCtrl">
     
-    <div id="wrapper" ng-class="{toggled: !toggle}" ng-controller="mainCtrl"> 
+    <div id="wrapper" ng-class="{toggled: !toggle}"> 
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper" >
@@ -47,7 +52,6 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <a ng-class="{'btn btn-success':init.contentsCollapsed,'btn btn-default':!init.contentsCollapsed}" ng-click="showTitles()">Show Contents</a>
-                        <a ng-class="{'btn btn-success':init.toggled,'btn btn-default':!init.toggled}" ng-click="hideExamples()">Toggle Example</a>
                         <a class="btn btn-default pull-right" ng-click="toggle=!toggle">Toggle Menu</a>                    
                     </div>
                 </div>
