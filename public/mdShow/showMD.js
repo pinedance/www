@@ -66,8 +66,8 @@ angular.module('showMD', ['ngRoute', 'ngSanitize', 'ng-marked'])
         angular.element('h1').prepend("<i class='fa fa-diamond'></i>  ");
         angular.element('h2').prepend("<i class='fa fa-cube'></i>  ");
         angular.element('h3').prepend("<i class='fa fa-cubes'></i>  ");
-        angular.element('h4').prepend("<i class='fa fa-caret-square-o-right'></i>  ");
-        angular.element('h5').prepend("<i class='fa fa-check-square'></i>  ");
+        angular.element('h4').prepend("<i class='fa fa-leaf'></i>  ");
+        angular.element('h5').prepend("<i class='fa fa-tint'></i>  ");
 
     }
     
