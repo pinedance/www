@@ -69,6 +69,9 @@ association strength
 
 accuracy and [F1 measure](https://en.wikipedia.org/wiki/F1_score) : [coursera tutorial](https://youtu.be/2akd6uwtowc)
 
+#### term weighted approch
+
+TF-IDF
 
 ### ref
 
