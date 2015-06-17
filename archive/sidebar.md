@@ -26,3 +26,13 @@
 <li>
     <a href="https://github.com/KMOnGoing/KMOnGoing.github.io/issues" target='_blank'>issue report</a>
 </li>
+
+<li class="sidebar-brand">
+    <a href="#">
+        Document Tool
+    </a>
+</li>
+<li>
+    <a href="http://www.tablesgenerator.com/markdown_tables" target="_blank">Tables Generator</a>
+</li>
+
