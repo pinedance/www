@@ -71,10 +71,17 @@ angular.module('showMD', ['ngRoute', 'ngSanitize', 'ng-marked'])
 
     }
     
+    function codeHighLight(){
+        angular.element('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
+        });
+    }
+    
     $scope.$on('$routeChangeSuccess', function(event, next, current){
         $timeout(function () {
             addHead();
-        }, 300);
+            codeHighLight()
+        }, 500);
     })
     
 }])

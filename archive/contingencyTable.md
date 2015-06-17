@@ -15,9 +15,15 @@ R에서 다음과 같은 함수로 만들 수 있다.
 * `xtabs( )`
 * `CrossTable( )`
 
-자세한 내용은 [Quick-R/Frequencies and Crosstabs](http://www.statmethods.net/stats/frequencies.html)를 참고
+ref
+
+* [Quick-R/Frequencies and Crosstabs](http://www.statmethods.net/stats/frequencies.html)
 
 ## Tests of Independence 
+
+ref
+
+* [Quick-R/Frequencies and Crosstabs](http://www.statmethods.net/stats/frequencies.html)
 
 ### Chi-Square Test
 
@@ -66,7 +72,7 @@ ref: [Tests of Significance and Measures of Association for Nominal and Ordinal 
 
 what is Lambda? : [The Goodman-Kruskal Index of Predictive Association](http://vassarstats.net/lamexp.html)
 
-```{R}
+```r
 # ref : https://gist.github.com/marcschwartz/3665743
 # Calculate Lambda
 # Return 3 values:
@@ -98,7 +104,7 @@ calc.lambda <- function(x)
 
 ### Cramer's V
 
-```{R}
+```r
 # ref : https://gist.github.com/marcschwartz/3665743
 # Calculate Cramer's V
 # For 2 x 2 tables V = Phi
@@ -116,7 +122,7 @@ calc.CV <- function(x)
 
 ### contingency coefficient
 
-```{R}
+```r
 # ref : https://gist.github.com/marcschwartz/3665743
 # Calculate Contingency Coefficient (Pearson's C)
 # and Sakoda's Adjusted Pearson's C
@@ -142,7 +148,7 @@ calc.cc <- function(x)
 
 ### phi coefficient
 
-```{R}
+```r
 # ref : https://gist.github.com/marcschwartz/3665743
 # Calculate Phi Coefficient
 # x = table
@@ -181,6 +187,14 @@ Prevalence ratio
 Odds ratio
 
 #### Absolute measures
+
+Attributable risk(AR) - aka risk/rate difference(RD)
+
+Attributable risk percent (AR%)
+
+Population attributable risk(PAR)
+
+Population attributable risk percent(PAR%)
 
 
 ### miscellaneous measures of association
@@ -221,3 +235,4 @@ TF-IDF
 
 
 ## Converting Frequency Tables to an "Original" Flat file 
+
