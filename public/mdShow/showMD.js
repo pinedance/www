@@ -60,8 +60,9 @@ angular.module('showMD', ['ngRoute', 'ngSanitize', 'ng-marked'])
         data = data || "# 잘못된 주소입니다.\n\n해당 문서가 없습니다.\n\n주소를 확인하세요."
         $scope.file.markdown = data;
         $scope.file.html = marked(data);
+
     });
-    
+
     function addHead(){
         angular.element('h1').prepend("<i class='fa fa-diamond'></i>  ");
         angular.element('h2').prepend("<i class='fa fa-cube'></i>  ");
@@ -77,13 +78,15 @@ angular.module('showMD', ['ngRoute', 'ngSanitize', 'ng-marked'])
         });
     }
     
+
     $scope.$on('$routeChangeSuccess', function(event, next, current){
+        console.log("route success")
         $timeout(function () {
             addHead();
             codeHighLight()
         }, 500);
     })
-    
+
 }])
     
 .factory('mdParser', ['$http', 'marked', function($http, marked) {
