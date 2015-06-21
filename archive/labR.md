@@ -6,9 +6,19 @@
 
 ## Visualize
 
-ggplot2
+### ggplot2
 
-ggviz
+### ggviz
+
+[cran page](http://cran.r-project.org/web/packages/ggvis/index.html)
+
+[ggvis basics](http://ggvis.rstudio.com/ggvis-basics.html)
+
+### googleViz
+
+[cran page](http://cran.r-project.org/web/packages/googleVis/)
+
+[googleVis examples](http://cran.r-project.org/web/packages/googleVis/vignettes/googleVis_examples.html)
 
 ## Modeling
 
