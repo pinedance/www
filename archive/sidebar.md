@@ -4,35 +4,29 @@
     </a>
 </li>
 
+<li class="sidebar-brand">
+    <a href="">Labs</a>
+</li>
+
+<li><a href="#/labTKM">TKM</a></li>
+<li><a href="#/labCode">All that code</a></li>
+<li><a href="#/labR">data analysis, R</a></li>
 
 <li class="sidebar-brand">
-    <a href="#/list">
-        List
-    </a>
-</li>
-
-<li>
-    <a href="#/softcover설치">softcover 설치</a>
+    <a href="#/list">Post List</a>
 </li>
 
 <li class="sidebar-brand">
-    <a href="#">
-        ETC
-    </a>
+    <a href="#/docTools">Document Tool</a>
 </li>
-<li>
-    <a href="#/copyright">Copyright</a>
+
+<li class="sidebar-brand">
+    <a href="">ETC</a>
 </li>
+
+<li><a href="#/copyright">Copyright</a></li>
 <li>
     <a href="https://github.com/KMOnGoing/KMOnGoing.github.io/issues" target='_blank'>issue report</a>
 </li>
 
-<li class="sidebar-brand">
-    <a href="#">
-        Document Tool
-    </a>
-</li>
-<li>
-    <a href="http://www.tablesgenerator.com/markdown_tables" target="_blank">Tables Generator</a>
-</li>
 
