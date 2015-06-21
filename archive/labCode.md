@@ -1,10 +1,9 @@
 # Code Lab
 
-
-## Ruby
-
-
-## Javascript
+## [Ruby](#/labRuby)
 
 
-## clojure
+## [Javascript](#/labJS)
+
+
+## [Clojure](#/labClj)
