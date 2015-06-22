@@ -540,5 +540,46 @@ var myPapers = [
                 "firstAuth":"오준호"
             }
         ]
+    },
+        {
+     "year":"2015",
+     "papers": [
+            {
+                "year":"2015",
+                "title":"Analysis of the Co-occurrence of Acupoints and Pathologies Documented in the Classical Acupuncture Literature",
+                "linkAddress":"data/papers/150506(오준호)ICCMR poster.pdf",
+                "title2":"Analysis of the Co-occurrence of Acupoints and Pathologies Documented in the Classical Acupuncture Literature",
+                "journal":"2015 ICCMR (Poster)",
+                "serial":"-",
+                "firstAuth":"Junho Oh"
+            },
+            {
+                "year":"2015",
+                "title":"조선중기 침자수법 계족침법에 대한 문헌 고찰",
+                "linkAddress":"http://www.kjacupuncture.org/journal/view.html?uid=712&&vmd=Full",
+                "title2":"Study of Chicken-Foot-Shaped Needling Method (Gaejokchimbup) from the Mid-Chosen Dynasty Era",
+                "journal":"Korean Journal of Acupuncture",
+                "serial":"32(1)",
+                "firstAuth":"오준호"
+            },
+            {
+                "year":"2015",
+                "title":"HF-IFF: TF-IDF를 응용한 병증-본초 연관성(relevancy) 측정과 본초 특성의 시각화 -청강의감 방제를 대상으로-",
+                "linkAddress":"http://210.101.116.36/journalSearch/ISS_Detail.asp?key=3323539&tname=kiss2002",
+                "title2":"HF-IFF: Applying TF-IDF to Measure Symptom-Medicinal Herb Relevancy and Visualize Medicinal Herb Characteristics - Studying Formulations in Cheongkangeuigam -",
+                "journal":"대한본초학회지",
+                "serial":"30(3)",
+                "firstAuth":"오준호"
+            },
+            {
+                "year":"2015",
+                "title":"동의보감 전산화 성과와 한의학 고문헌 전산화의 과제 - 모바일 어플리케이션 ‘내손안에 동의보감’을 중심으로 -",
+                "linkAddress":"https://medicalhistory.jams.or.kr/po/volisse/sjPubsArtiPopView.kci?soceId=INS000000517&artiId=SJ0000000357&sereId=SER000000001&submCnt=3&indexNo=10",
+                "title2":"The Achievements and Problems of Computerization of Korean Medical Classics, Donguibogam - Focusing on the mobile Application ‘The Donguibogam in My Hand’ -",
+                "journal":"한국의사학회지",
+                "serial":"28(1)",
+                "firstAuth":"오준호"
+            }
+        ]
     }
 ]	
