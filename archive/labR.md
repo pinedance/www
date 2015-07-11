@@ -14,6 +14,10 @@
 
 [ggvis basics](http://ggvis.rstudio.com/ggvis-basics.html)
 
+[ggvis cookbook](http://ggvis.rstudio.com/cookbook.html)
+
+[Data Visualization Presentation](https://rpubs.com/conniez/datavis)
+
 ### googleViz
 
 [cran page](http://cran.r-project.org/web/packages/googleVis/)
