@@ -11,10 +11,10 @@ var myShowCaseApp = [
 		},
 	"right": 
 		{
-			"direct":"",
+			"direct":"http://kmongoing.github.io/sample/codemirror/app/index.html",
 			"img":default_img,
-			"title":"준비중",
-			"desc":"준비중"
+			"title":"고문헌 텍스트 에디터(sample)",
+			"desc":"codeMirror를 이용한 고문헌 텍스트 에디터 데모"
 		}
 	},
 	{"left": 
