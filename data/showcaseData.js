@@ -49,7 +49,7 @@ var myShowCaseApp = [
 	},
 	{"left": 
 		{
-			"direct":"../spa/mdShow/index.html",
+			"direct":"../archive.html",
 			"img":default_img,
 			"title":"mdShow",
 			"desc":"mark down viewer. </br> '?url=~~~'로도 사용 가능"
