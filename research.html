@@ -75,6 +75,8 @@
                                 <p>{{paper.title + "\t\t\t"}}<a href="{{paper.linkAddress}}" target="_blank"><span class="glyphicon glyphicon-link" aria-hidden="true"></span></a><a href="{{'#year' + papers.year}}"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span></a></p>
                                 <p>{{paper.title2}}</p>
                                 <footer>{{paper.firstAuth + "\t\t\t"}}<cite title="Source Title">{{paper.journal}} {{paper.serial}}</cite></footer>
+                                <br ng-show="paper.description">
+                                <div ng-bind-html="paper.description"></div>
                             </blockquote>
                         </div>
                         
@@ -110,13 +112,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular-sanitize.min.js"></script>
     <script src="./data/researchData.js"></script>
     
     <!-- Menu Toggle Script -->
     <script>
         
 	(function(){
-		var app = angular.module('papers', []);
+		var app = angular.module('papers', ['ngSanitize']);
 		app.controller('papersCtrl', ['$scope', function($scope) {
 				
             /// menu

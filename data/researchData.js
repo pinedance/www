@@ -537,7 +537,8 @@ var myPapers = [
                 "title2":"A Study on the Organization and Contents of CheongKangEuiGam",
                 "journal":"한국의사학회지",
                 "serial":"27(2)",
-                "firstAuth":"오준호"
+                "firstAuth":"오준호",
+                "description": "<p>청강의감 처방 특성: <a href='data/images/CheongKangEuiGam/ClusterDensity.png'>cluster</a>(<a href='data/images/CheongKangEuiGam/ClusterDensity2.png'>확대</a>), <a href='data/images/CheongKangEuiGam/Density.png'>density</a>(<a href='data/images/CheongKangEuiGam/Density2.png'>확대</a>)</p>"
             }
         ]
     },
