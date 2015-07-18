@@ -552,7 +552,8 @@ var myPapers = [
                 "title2":"Analysis of the Co-occurrence of Acupoints and Pathologies Documented in the Classical Acupuncture Literature",
                 "journal":"2015 ICCMR (Poster)",
                 "serial":"-",
-                "firstAuth":"Junho Oh"
+                "firstAuth":"Junho Oh",
+                "description" : "<p>Related app: <a target='_blank' href='http://pinedance.github.io/demo.html#/accupoints-pathologies'>accupoints-pathologies Demo</a></p>"
             },
             {
                 "year":"2015",
@@ -570,7 +571,8 @@ var myPapers = [
                 "title2":"HF-IFF: Applying TF-IDF to Measure Symptom-Medicinal Herb Relevancy and Visualize Medicinal Herb Characteristics - Studying Formulations in Cheongkangeuigam -",
                 "journal":"대한본초학회지",
                 "serial":"30(3)",
-                "firstAuth":"오준호"
+                "firstAuth":"오준호",
+                "description" : "<p>Related app: <a target='_blank' href='http://pinedance.github.io/demo.html#/HF-IFF'>HF-IFF Demo</a></p>"
             },
             {
                 "year":"2015",
@@ -579,7 +581,8 @@ var myPapers = [
                 "title2":"The Achievements and Problems of Computerization of Korean Medical Classics, Donguibogam - Focusing on the mobile Application ‘The Donguibogam in My Hand’ -",
                 "journal":"한국의사학회지",
                 "serial":"28(1)",
-                "firstAuth":"오준호"
+                "firstAuth":"오준호",
+                "description": "<p>Related app: <a target='_blank' href='https://play.google.com/store/apps/details?id=kr.re.kiom.donguibogam&hl=ko'>내손안에 동의보감</a></p>"
             }
         ]
     }
