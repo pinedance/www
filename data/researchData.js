@@ -487,7 +487,8 @@ var myPapers = [
                 "title2":"Orthodox Oriental Medicine in East Asia used for Canine Diseases",
                 "journal":"대전대학교 한의학연구소 논문집",
                 "serial":"22(1)",
-                "firstAuth":"박상영, 오준호"
+                "firstAuth":"박상영, 오준호",
+                "description" : "<p>한줄요약: 소,돼지,낙타 말고 개나 고양이를 치료했던 한의학 처방들도 있단다. </p>"
             },
             {
                 "year":"2013",
@@ -496,7 +497,8 @@ var myPapers = [
                 "title2":"‘Reorganization of 『BenChaoGangMu』’ of medical practitioners in Joseon Dynasty in the 19th-20th centuries",
                 "journal":"한국의사학회지",
                 "serial":"26(2)",
-                "firstAuth":"오준호"
+                "firstAuth":"오준호",
+                "description": "<p>한줄요약: 조선 사람들은 본초서인 '본초강목'을 처방서로 활용하려 했다구. 꿩 잡는게 매라 이거지. </p>"
             }
         ]
     },
@@ -510,7 +512,8 @@ var myPapers = [
                 "title2":"Composition and Contents of Haeng Gun Bang Pyeon Pyeon Bang, a Military Medicine Literature",
                 "journal":"대전대학교 한의학연구소 논문집",
                 "serial":"22(2)",
-                "firstAuth":"오준호"
+                "firstAuth":"오준호", 
+                "description" : "<p>한줄요약: 옛날에는 휴대용 군용식량을 어떻게 만들었는지 궁금하지 않니?</p>"
             },
             {
                 "year":"2014",
@@ -519,7 +522,8 @@ var myPapers = [
                 "title2":"Study on quantization of Korean medicine terminology concept - for disease symptom terms of Compilation of Formulas and Medicinals Addendum -",
                 "journal":"대한한의학원전학회지",
                 "serial":"27(1)",
-                "firstAuth":"이정현, 김우영, 오준호"
+                "firstAuth":"이정현, 김우영, 오준호",
+                "description" : "<p>한줄요약: 치료 방법의 다양성을 정량화 해서 어떤 용어가 얼마나 구체적인이 혹은 모호한지 표현할 수 있어.</p> "
             },
             {
                 "year":"2014",
@@ -528,7 +532,8 @@ var myPapers = [
                 "title2":"Study on quantization of Korean medicine terminology concept - for disease symptom terms of Compilation of Formulas and Medicinals Addendum -",
                 "journal":"대전대학교 한의학연구소 논문집",
                 "serial":"23(1)",
-                "firstAuth":"오준호"
+                "firstAuth":"오준호",
+                "description": "<p>한줄요약: 침구치료의 첫 단추는 근위취혈이다! [fig: <a href='data/images/침구자생경_클러스터링.png'>hierarchical clustering</a>]</p>" 
             },
             {
                 "year":"2014",
@@ -538,7 +543,7 @@ var myPapers = [
                 "journal":"한국의사학회지",
                 "serial":"27(2)",
                 "firstAuth":"오준호",
-                "description": "<p>청강의감 처방 특성: <a href='data/images/CheongKangEuiGam/ClusterDensity.png'>cluster</a>(<a href='data/images/CheongKangEuiGam/ClusterDensity2.png'>확대</a>), <a href='data/images/CheongKangEuiGam/Density.png'>density</a>(<a href='data/images/CheongKangEuiGam/Density2.png'>확대</a>)</p>"
+                "description": "<p>한줄요약 : 청강의 처방은 이진탕, 사물탕, 사군자탕, 육미팔미의 변주다. [fig: <a href='data/images/CheongKangEuiGam/ClusterDensity.png'>cluster</a>(<a href='data/images/CheongKangEuiGam/ClusterDensity2.png'>확대</a>), <a href='data/images/CheongKangEuiGam/Density.png'>density</a>(<a href='data/images/CheongKangEuiGam/Density2.png'>확대</a>)]</p>"
             }
         ]
     },
@@ -553,7 +558,7 @@ var myPapers = [
                 "journal":"2015 ICCMR (Poster)",
                 "serial":"-",
                 "firstAuth":"Junho Oh",
-                "description" : "<p>Related app: <a target='_blank' href='http://pinedance.github.io/demo.html#/accupoints-pathologies'>accupoints-pathologies Demo</a></p>"
+                "description" : "<p>한줄요약 : 이렇게 표현하니까 병증과 경혈의 관계가 한눈에 보이지? [Related app: <a target='_blank' href='http://pinedance.github.io/demo.html#/accupoints-pathologies'>accupoints-pathologies Demo</a>]</p>"
             },
             {
                 "year":"2015",
@@ -562,7 +567,8 @@ var myPapers = [
                 "title2":"Study of Chicken-Foot-Shaped Needling Method (Gaejokchimbup) from the Mid-Chosen Dynasty Era",
                 "journal":"Korean Journal of Acupuncture",
                 "serial":"32(1)",
-                "firstAuth":"오준호"
+                "firstAuth":"오준호",
+                "description": "<p>한줄요약 : 우리 'TP친다'고 하지 말고 고상하게 '계족침법'이라고 하자. </p>"
             },
             {
                 "year":"2015",
@@ -572,7 +578,7 @@ var myPapers = [
                 "journal":"대한본초학회지",
                 "serial":"30(3)",
                 "firstAuth":"오준호",
-                "description" : "<p>Related app: <a target='_blank' href='http://pinedance.github.io/demo.html#/HF-IFF'>HF-IFF Demo</a></p>"
+                "description" : "<p>한줄요약 : 병증-본초 association measuring에서 TF-IDF를 응용한 HF-IDF가 reasonable하다. [Related app: <a target='_blank' href='http://pinedance.github.io/demo.html#/HF-IFF'>HF-IFF Demo</a>]</p>"
             },
             {
                 "year":"2015",
@@ -582,7 +588,7 @@ var myPapers = [
                 "journal":"한국의사학회지",
                 "serial":"28(1)",
                 "firstAuth":"오준호",
-                "description": "<p>Related app: <a target='_blank' href='https://play.google.com/store/apps/details?id=kr.re.kiom.donguibogam&hl=ko'>내손안에 동의보감</a></p>"
+                "description": "<p>한줄요약 : 좋은 어플리케이션은 양질의 콘텐츠에서 나온다. [Related app: <a target='_blank' href='https://play.google.com/store/apps/details?id=kr.re.kiom.donguibogam&hl=ko'>내손안에 동의보감</a>]</p>"
             }
         ]
     }
