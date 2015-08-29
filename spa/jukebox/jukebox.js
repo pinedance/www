@@ -24,8 +24,8 @@ function($scope, $firebase, $interval, $http, $window, $cookieStore, prompt){
                     label: 'answer?',
                     value: value
             }).then(function(answer){
-                $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-                    $http.post('http://myapibox.herokuapp.com/auth', {serial: answer} ).
+                // $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+                    $http.post('http://myapibox.herokuapp.com/api/auth', {serial: answer} ).
                       success(function(data, status, headers, config) {
                         console.log(data)
                         if(data.auth){
