@@ -58,20 +58,8 @@
 	</header>
 
 	<div class="container">
-        <div class="row">
-            <div class="col-xs-10">
-                <button type="button" class="btn btn-success" ng-repeat="listname in playlists" ng-click="reloadPlayList(listname)" >{{listname}}</button>
-                <button ng-click="editPlayList()" class="btn btn-primary">{{currentPlaylist}}</button>
-                <span ng-click="deletePlayList()" class="glyphicon glyphicon-remove-circle" aria-hidden="false"></span>
-            </div>
-            <div class="col-xs-2">
-                <input type="text" class="form-control" ng-model="newNamedPlaylist" ng-keypress="renamePlayList($event)" ng-show="editingPlayList">
-                <input type="text" class="form-control" ng-model="newPlaylist" ng-keypress="addPlayList($event)" ng-show="!editingPlayList" placeholder="add new playlist">
-            </div>
-        </div>
-        <br>
 	    <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-9">
 				<table class="table table-hover">
                     <caption>
                     </caption>
@@ -89,19 +77,19 @@
 					</thead>
 					<tbody>
 						<tr ng-repeat="song in songs" ng-class="{info: song == currentSong}">
-							<th><span ng-click="delete(song)" class="glyphicon glyphicon-remove-circle" aria-hidden="true"></th>
-							<th><span  ng-click="edit(song)" class="glyphicon glyphicon-edit" aria-hidden="true"></th>
+							<th><span ng-click="delete(song)" class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></th>
+							<th><span  ng-click="edit(song)" class="glyphicon glyphicon-edit" aria-hidden="true"></span></th>
 							<th>{{song.title}}</th>
 							<th>{{song.artist}}</th>
 							<th><small><a ng-href="{{song.url}}" target="_blank">{{ "... " + youtube_url2id(song.url) + " ..." }}</a></small></th>
-							<th><span ng-click="jukebox.ctrl.playThis($index)" class="glyphicon glyphicon-play" aria-hidden="true"></th>
-							<th><span ng-click="up(song)" class="glyphicon glyphicon-collapse-up" aria-hidden="true"></th>
-							<th><span ng-click="down(song)" class="glyphicon glyphicon-collapse-down" aria-hidden="true"></th>
+							<th><span ng-click="jukebox.ctrl.playThis($index)" class="glyphicon glyphicon-play" aria-hidden="true"></span></th>
+							<th><span ng-click="up(song)" class="glyphicon glyphicon-collapse-up" aria-hidden="true"></span></th>
+							<th><span ng-click="down(song)" class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span></th>
 						</tr>
 					</tbody>
 					<tfoot ng-if="!editing">
 						<th></th>
-						<th><span ng-click="add(newSong)" class="glyphicon glyphicon-check" aria-hidden="true"></th>
+						<th><span ng-click="add(newSong)" class="glyphicon glyphicon-check" aria-hidden="true"></span></th>
 						<th><input ng-model='newSong.title' type='text' placeholder='title'></th>
 						<th><input ng-model='newSong.artist' type='text' placeholder='artist'></th>
 						<th><input ng-model='newSong.url' type='text' placeholder='url'></th>
@@ -111,7 +99,7 @@
 					</tfoot>
 					<tfoot ng-if="editing">
 						<th></th>
-						<th><span ng-click="update(updatedSong)" class="glyphicon glyphicon-check" aria-hidden="true"></th>
+						<th><span ng-click="update(updatedSong)" class="glyphicon glyphicon-check" aria-hidden="true"></span></th>
 						<th><input ng-model='updatedSong.title' type='text'></th>
 						<th><input ng-model='updatedSong.artist' type='text'></th>
 						<th><input ng-model='updatedSong.url' type='text'></th>
@@ -120,8 +108,23 @@
 						<th></th>
 					</tfoot>
 				</table>
-				
-			</div>
+			</div> <!-- col -->
+			
+            <div class="col-xs-3">
+            	<div class="panel panel-default">
+				    <!-- Default panel contents -->
+				    <div class="panel-heading">Play List</div>
+				    <ul class="list-group">
+					    <li class="list-group-item" ng-repeat="listname in playlists" ng-click="reloadPlayList(listname)" ng-class="{'list-group-item-success':listname===currentPlaylist}">{{listname}}
+							&nbsp; &nbsp; &nbsp; &nbsp;<span ng-show="listname===currentPlaylist" ng-click="editPlayList()" class="glyphicon glyphicon-edit glyphicon-align-right" aria-hidden="true"></span>
+							&nbsp; &nbsp;<span ng-show="listname===currentPlaylist" ng-click="deletePlayList()" class="glyphicon glyphicon-remove-circle " aria-hidden="true"></span>
+					    </li>
+					</ul>
+				</div>				
+				<input type="text" class="form-control" ng-model="newNamedPlaylist" ng-keypress="renamePlayList($event)" ng-show="editingPlayList"></br>
+				<input type="text" class="form-control" ng-model="newPlaylist" ng-keypress="addPlayList($event)" ng-show="!editingPlayList" placeholder="add new playlist"></br>
+            </div>
+
 		</div> <!-- row -->
 	</div> <!-- container -->
 
