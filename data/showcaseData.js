@@ -56,10 +56,10 @@ var myShowCaseApp = [
 		},
 	"right": 
 		{
-			"direct":"",
+			"direct":"http://myapibox.herokuapp.com/api",
 			"img":default_img,
-			"title":"준비중",
-			"desc":"준비중"
+			"title":"myAPIbox",
+			"desc":"자주쓰는 기능 모음"
 		}
 	}
 	

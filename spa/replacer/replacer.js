@@ -78,20 +78,20 @@ myapp.controller('MainCtrl', ['$scope', '$http', '_', function ($scope, $http, _
     $scope.getMyWordsets = function(event){
         
         var _tmpWordsets = $scope.myWordsets.replaceChr(chrCode.dup).split(/\r\n|\n/)  // 이중코드 병합 require exString, underscore.js
-        console.log()
         var _tmp = _.filter( _tmpWordsets, function(elm){ 
-            return  ( elm.indexOf("#") !== 0 ) &&       // 주석줄이 아닐 것
-                    ( !(/^\s*$/).test(elm) ) &&     // 빈줄이 아닐 것
-                    ( elm.split(/[ \t]*#/)[0].split(/\t/).length === 2) // before after 2개 일 것
+            return  ( !(/^\s*#.*$/).test(elm) ) &&       // 주석줄이 아닐 것
+                    ( !(/^\s*$/).test(elm) )            // 빈줄이 아닐 것    
+                    // && ( elm.split(/[ \t]*#/)[0].split(/\t/).length === 2) // before after 2개 일 것
         } ) 
-        
-        $scope.wordsets = _.map( _tmp, function(elm){ return elm.split(/[ \t]*#/)[0].split(/\t/) } );
+        console.log(_tmp)
+        $scope.wordsets = _.map( _tmp, function(elm){ var e = elm.split(/\t*#/)[0].split(/\t/); return [e[0], e[1]] } );
 
         if( phase2validate() && validateArray( $scope.wordsets ) && $scope.file){
             $scope.phase = 2;
         } else {
             $scope.phase = 1;
         }
+        console.log($scope.wordsets)
     };
     
     $scope.convert = function(filename){
@@ -101,9 +101,13 @@ myapp.controller('MainCtrl', ['$scope', '$http', '_', function ($scope, $http, _
         var arr = $scope.wordsets;
 
         for(var i=0, a; a=arr[i]; i++){
-            a[2] = 0;
-            a[2] = tmp.matchCount(a[0]);  // exString            
-            tmp = tmp.gsub(a[0], a[1]);  // exString 
+            a[2] = 0;                   // 몇번 번경될지 count
+            a[2] = tmp.matchCount(a[0]);  // exString         
+            if( !a[1] || (a[1]==="") ){
+                tmp = tmp.gsub(a[0], "");  // exString 
+            } else {
+                tmp = tmp.gsub(a[0], a[1]);  // exString 
+            }
 
             $scope.info.replaceTimes += a[2];
         }
