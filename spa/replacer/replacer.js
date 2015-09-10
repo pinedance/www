@@ -9,7 +9,7 @@ myapp.controller('MainCtrl', ['$scope', '$http', '_', function ($scope, $http, _
     var chrCode = {};
 
     (function loadChrDup(){
-        $http.get('http://mytoolbox.herokuapp.com/showdict/duplicatedCode').
+        $http.get('http://myapibox.herokuapp.com/api/tn/dict/duplications').
               success(function(data, status, headers, config) {
                 console.log("loadChrDup Success!");
                 chrCode.dup = eval(data);
@@ -83,7 +83,6 @@ myapp.controller('MainCtrl', ['$scope', '$http', '_', function ($scope, $http, _
                     ( !(/^\s*$/).test(elm) )            // 빈줄이 아닐 것    
                     // && ( elm.split(/[ \t]*#/)[0].split(/\t/).length === 2) // before after 2개 일 것
         } ) 
-        console.log(_tmp)
         $scope.wordsets = _.map( _tmp, function(elm){ var e = elm.split(/\t*#/)[0].split(/\t/); return [e[0], e[1]] } );
 
         if( phase2validate() && validateArray( $scope.wordsets ) && $scope.file){
@@ -91,7 +90,6 @@ myapp.controller('MainCtrl', ['$scope', '$http', '_', function ($scope, $http, _
         } else {
             $scope.phase = 1;
         }
-        console.log($scope.wordsets)
     };
     
     $scope.convert = function(filename){
