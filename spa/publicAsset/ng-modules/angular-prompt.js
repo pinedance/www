@@ -1,6 +1,6 @@
 // https://github.com/cgross/angular-prompt
 
-angular.module('cgPrompt',['ui.bootstrap']);
+angular.module('cgPrompt',['ui.bootstrap', 'ngCookies']);
 
 angular.module('cgPrompt').factory('prompt',['$modal','$q',function($modal,$q){
 
@@ -142,3 +142,27 @@ angular.module('cgPrompt').run(['$templateCache', function($templateCache) {
   );
 
 }]);
+
+// add custom code by jun
+
+angular.module('cgPrompt').constant("cgPromptCons", {
+    url: {
+        authapi:'http://myapibox.herokuapp.com/api/auth'
+    }
+})
+
+angular.module('cgPrompt').factory('loginSession', ['$http', "$cookieStore", "prompt", "cgPromptCons", 
+function($http, $cookieStore, prompt, cgPromptCons){
+    return function (promptMessage, promptInputSucceed, promptInputFailed){
+        prompt( promptMessage ).then( function(answer){
+            // $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+            $http.post( cgPromptCons.url.authapi, {serial: answer} ).
+            success(function(data, status, headers, config) { console.log(data) ;
+                promptInputSucceed($cookieStore, data)
+            }).
+            error(function(data, status, headers, config) { console.log(data) ;
+                promptInputFailed($cookieStore)
+            });        
+        });  
+    }
+}])

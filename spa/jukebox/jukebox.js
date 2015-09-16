@@ -6,49 +6,52 @@ app.filter('secondsToDateTime', [ function() {
     };
 }]) // http://stackoverflow.com/questions/28394572/angularjs-seconds-to-time-filter
 
-app.controller('mainCtrl', ['$scope', "$firebase", "$interval", "$http", "$window", "$cookieStore", "prompt",
-function($scope, $firebase, $interval, $http, $window, $cookieStore, prompt){
+app.controller('mainCtrl', ['$scope', "$firebase", "$interval", "$window", "$cookieStore", "loginSession",
+function($scope, $firebase, $interval, $window, $cookieStore, loginSession){
+
+// login logout
+
+    $scope.login = function(){ 
+        defaultMsg.value = "welcome!"
+        loginSession(defaultMsg, promptInputSucceed, promptInputFailed)
+    }
     
     $scope.logout = function(){ 
         $cookieStore.remove('login') ; 
+        $scope.jukebox.ctrl.pause()
         $scope.loginState = $cookieStore.get('login') ; 
-        console.log($cookieStore.get('login'))
         $window.location.reload();  // http://stackoverflow.com/questions/21885518/angularjs-reload-page
     }
-
-    function loginSession(value){
-            prompt({
-                    title: 'login',
-                    message: 'input password',
-                    input: true,
-                    label: 'answer?',
-                    value: value
-            }).then(function(answer){
-                // $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-                    $http.post('http://myapibox.herokuapp.com/api/auth', {serial: answer} ).
-                      success(function(data, status, headers, config) {
-                        console.log(data)
-                        if(data.auth){
-                            $cookieStore.put('login', true)
-                            $scope.loginState = $cookieStore.get('login'); 
-                            linkFirebase()
-                        } else {
-                            loginSession('wrong password')
-                        }
-                }).
-                      error(function(data, status, headers, config) {
-                        console.log(data)
-                });        
-            })
-        }
-
-    if(!$cookieStore.get('login')){
-        // login session
-        loginSession()
-    } else {
-        $scope.loginState = $cookieStore.get('login'); 
-        linkFirebase()
+    
+    var defaultMsg = { 
+        title: 'login',
+        message: 'input password',
+        input: true,
+        value: 'welcome!',
+        label: 'answer?'
     }
+    
+    function failMessage(){
+        alert("wrong password");
+    }
+    
+    function promptInputSucceed($cookieStore, data){
+        if(data.auth){
+            $cookieStore.put('login', true)
+            $scope.loginState = $cookieStore.get('login') ; 
+            $scope.jukebox.ctrl.play()
+        } else {
+            failMessage()
+        }
+    }
+    
+    function promptInputFailed($cookieStore){
+        failMessage()
+    }
+    
+// init
+
+    $scope.loginState = $cookieStore.get('login')
     
     var isMobile = (function isMobileOrTablet() {
           var check = false;
@@ -56,8 +59,9 @@ function($scope, $firebase, $interval, $http, $window, $cookieStore, prompt){
         return check;
     }()); // http://stackoverflow.com/questions/11381673/detecting-a-mobile-browser
     
-    
     var ref, mainObj
+    
+    linkFirebase()
     
     function linkFirebase(){
         ref = new Firebase("https://brilliant-torch-7744.firebaseio.com/"); 
@@ -69,7 +73,6 @@ function($scope, $firebase, $interval, $http, $window, $cookieStore, prompt){
             $scope.$broadcast('loadYT', true);
         });        
     }
-
 
     function setPlayLists(){
         var _PlayList = Object.keys( $scope.data )
@@ -109,7 +112,6 @@ function($scope, $firebase, $interval, $http, $window, $cookieStore, prompt){
     }());
 
    ///////////////////////////// jukebox ////////////////////////////////
-
     
     $scope.$on('onPlayerReady', function(event, data){
         $scope.jukebox.state = {
@@ -131,8 +133,10 @@ function($scope, $firebase, $interval, $http, $window, $cookieStore, prompt){
             $scope.jukebox.state.now = data.target.getPlayerState();
         })
         
-        if(isMobile){return}  // 모바일인 경우 자동 재생 되지 않으므로 정지시킴
-        $scope.jukebox.ctrl.play();
+        // if(isMobile){return}  // 모바일인 경우 자동 재생 되지 않으므로 정지시킴
+        if($scope.loginState){
+            $scope.jukebox.ctrl.play();
+        }
     });
     
 //    -1 –시작되지 않음, 0 – 종료, 1 – 재생 중, 2 – 일시중지, 3 – 버퍼링, 5 – 동영상 신호
