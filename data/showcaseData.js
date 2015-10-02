@@ -49,17 +49,17 @@ var myShowCaseApp = [
 	},
 	{"left": 
 		{
-			"direct":"../archive.html",
-			"img":default_img,
-			"title":"mdShow",
-			"desc":"mark down viewer. </br> '?url=~~~'로도 사용 가능"
-		},
-	"right": 
-		{
-			"direct":"http://myapibox.herokuapp.com/api",
+			"direct":"http://myapibox.herokuapp.com/",
 			"img":default_img,
 			"title":"myAPIbox",
 			"desc":"자주쓰는 기능 모음"
+		},
+	"right": 
+		{
+			"direct":"",
+			"img":default_img,
+			"title":"준비중",
+			"desc":""
 		}
 	}
 	
