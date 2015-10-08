@@ -1,179 +1,116 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="index">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Homepage">
-    <meta name="author" content="Junho Oh">
-
-    <title>Grey Box</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" >
-
-    <!-- Custom CSS -->
-    <link href="./public/css/grayscale.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <!--<link href="./public/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" >
-    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-
-</head>
-
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" ng-controller="indexCtrl">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                    <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">
-                    <i class="fa fa-play-circle"></i>  <span class="light">Start</span> Grey Box
-                </a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li ng-repeat="list in lists">
-                        <a class="page-scroll" href="#{{list.ref}}">{{list.title}}</a>
-                    </li>
-                    <li>
-                        <a href="demo.html" target="_black"><span class="glyphicon glyphicon-gift" aria-hidden="true"></a>
-                    </li>
-                    <li>
-                        <a href="presentation.html" target="_black"><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></a>
-                    </li>
-                    <li>
-                        <a href="./spa/jukebox/jukebox.html" target="_black"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <!-- Intro Header -->
-    <header class="intro">
-        <div class="intro-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">Grey Box</h1>
-                        <p class="intro-text">Show me your works <br> ^^ </p>
-                        <a href="#about" class="btn btn-circle page-scroll">
-                            <i class="fa fa-angle-double-down animated"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- About Section -->
-    <section id="about" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>About</h2>
-                <p>Gery box is ... </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contents Section -->
-    <section  ng-repeat="list in lists" id="{{list.ref}}" class="content-section text-center">
-        <div class="{{list.ref}}-section">
-            <div class="container">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <h2>{{list.title}}</h2>
-                    <p>{{list.desc}}</p>
-                    <a href="{{list.address}}" target="_blank" class="btn btn-default btn-lg">Visit Page</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>Contact</h2>
-                <p>Feel free to email me to provide some feedback.</p>
-                <p><a href="mailto:pinedance@gmail.com">pinedance@gmail.com</a></p>
-                <ul class="list-inline banner-social-buttons">
-                    <li>
-                        <a href="#" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    
-    <!-- DisQus Section -->
-    <section id="contact" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>Tell me your story</h2>
-                   
-                <!-- DisQus insert Code -->
-                   <div id="disqus_thread"></div>
-                    <script type="text/javascript">
-                        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-                        var disqus_shortname = 'pinedance'; // required: replace example with your forum shortname
-
-                        /* * * DON'T EDIT BELOW THIS LINE * * */
-                        (function() {
-                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                        })();
-                    </script>
-                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                <!-- end -->
-                
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="container text-center"> 
-            <p>Copyright &copy; {{copyrightYear()}} Junho.</p>
-        </div>
-    </footer>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+<html>
 	
-    <!-- Plugin JavaScript -->
-    <script src="./public/js/jquery.easing.min.js"></script>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link href="./public/css/indexDefault.css" rel="stylesheet" type="text/css">
+	</head>
+	
+<body ng-app="index" ng-controller="indexCtrl">
+    
+<!--navigation-->
+<div class="navbar navbar-default navbar-static-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#"><span>Grey Box</span></a>
+		</div>
+		<div class="collapse navbar-collapse" id="navbar-ex-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li ng-repeat="menu in menus" >
+					<a ng-href="{{ menu.redirect }}" target="_blank" ng-bind="menu.title"></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="./public/js/grayscale.js"></script>
+<!--header slide-->
+<div class="carousel slide" id="fullcarousel-example" data-interval="5000" data-ride="carousel">
+	<div class="carousel-inner">
+		<div class="item" ng-repeat="item in carouselImages" ng-class="{active:!$index}">
+			<img ng-src="{{ item.src }}">
+			<!--<div class="carousel-caption">-->
+			<!--	<h2>Title</h2>-->
+			<!--	<p>Description</p>-->
+			<!--</div>-->
+		</div>
+	</div>
+</div>
 
-	<script>
-	(function(){
-	var app = angular.module('index', []);
-	app.controller('indexCtrl', ['$scope', function($scope) {
-				
-		////copyright
+<div class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="text-center">Team</h1>
+				<!--<p class="text-center">We are a group of skilled individuals.</p>-->
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+				<img src="./public/img/memberFace2.jpg"
+				class="img-circle img-responsive">
+			</div>
+			<div class="col-md-4">
+				<h3 class="text-left">Grey</h3>
+				<p class="text-left">쉬었다 가소</p>
+			</div>
+			<div class="col-md-2">
+				<img src="http://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png"
+				class="img-circle img-responsive">
+			</div>
+			<div class="col-md-4 text-center">
+				<h3 class="text-left">John Doe</h3>
+				<p class="text-left">별거 없다. </p>
+			</div>
+		</div>
+	</div>
+</div>
+		
+<!--footer-->
+<footer class="section section-primary">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<h1>Footer header</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
+					<br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+					<br>Ut enim ad minim veniam, quis nostrud</p>
+			</div>
+			<div class="col-sm-6">
+				<p class="text-info text-right">
+					<br>
+					<br>
+				</p>
+				<div class="row">
+					<div class="col-md-12 hidden-xs text-right">
+						<a href="#"><i class="fa fa-3x fa-fw fa-instagram text-inverse"></i></a>
+						<a href="#"><i class="fa fa-3x fa-fw fa-twitter text-inverse"></i></a>
+						<a href="#"><i class="fa fa-3x fa-fw fa-facebook text-inverse"></i></a>
+						<a href="#"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+		
+<!--script-->
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular-sanitize.min.js"></script>
+<script type="text/javascript">
+    var app = angular.module("index", ['ngSanitize']);
+    app.controller("indexCtrl", ["$scope", function($scope){ 
+        
+        ////copyright
 		$scope.copyrightYear = function(){
 			var thisYear = new Date().getFullYear();
 			var startYear = 2015;
@@ -184,27 +121,44 @@
 			}
 		}
 
-		$scope.lists = [				
-			{
-				"ref":"research",
-				"title":"Research",
-				"desc": "research paper etc",
-				"address" : "research.html"
-			}, 
-			{
-				"ref":"showcase",
-				"title":"Showcase",
-				"desc": "^^;",
-				"address" : "showcase.html"
-			}			
-		]
-				
-					
-		}]);
-	})();
-		
-	</script>
-
+        $scope.menus = [
+            {
+                title : "RESEARCH",
+                redirect : "research.html"
+            },
+            {
+                title : "SHOWCASE",
+                redirect : "showcase.html"
+            },
+            {
+                title : "DEMO",
+                redirect : "demo.html"
+            },
+            {
+                title : "PRESENATION",
+                redirect : "presentation.html"
+            },
+            {
+                title : "JUKEBOX",
+                redirect : "./spa/jukebox/jukebox.html"
+            }
+        
+        ]
+        
+        $scope.carouselImages = [
+            {
+                src : "https://ununsplash.imgix.net/photo-1423753623104-718aaace6772?w=1024&amp;q=50&amp;fm=jpg&amp;s=1ffa61419561b5c796bca3158e7c704c"
+            },
+            {
+                src : "https://unsplash.imgix.net/photo-1422222948315-28aadb7a2cb8?w=1024&amp;q=50&amp;fm=jpg&amp;s=cfeadbd7a991e58b553bee29a7eeca55"
+            },
+            {
+                src : "https://unsplash.imgix.net/photo-1422728221357-57980993ea99?w=1024&amp;q=50&amp;fm=jpg&amp;s=b4a34018d745e33048bcfc326cb9907b"
+            }    
+        ]
+        
+    }])
+</script>
+	
 </body>
-
 </html>
