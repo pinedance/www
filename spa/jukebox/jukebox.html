@@ -15,11 +15,15 @@
 			<div class="container">
 			
 			<div class="row">
+				<div class="col-md-3 col-xs-6">
+					<img src="http://cfile22.uf.tistory.com/image/2373E2335293CD600DC795" alt="" width="100%" class="pull-right img-responsive img-rounded">  
+				</div>
+				
 				<div class="col-md-9 col-xs-6">
 					<h1>Juke box
 						<span>
-							<button type="button" class="btn btn-danger btn-lg" ng-click="login()" ng-hide="loginState"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></button>
-							<button type="button" class="btn btn-info btn-lg" ng-click="logout()" ng-show="loginState"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></button>
+							<button type="button" class="btn btn-danger btn-lg" ng-click="login()" ng-hide="onState('login')"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></button>
+							<button type="button" class="btn btn-info btn-lg" ng-click="logout()" ng-show="onState('login')"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></button>
 						</span>
 					</h1>
 					<h3>{{ currentSong.title }} 
@@ -27,7 +31,7 @@
 					    <small>&nbsp;&nbsp;&nbsp;{{ jukebox.state.runTime | secondsToDateTime | date:'mm:ss'}}</small>
 				    </h3>
 					<br>
-					<div ng-show="loginState">
+					<div ng-show="onState('login')">
 						<button type="button" class="btn btn-default btn-lg" ng-click="jukebox.ctrl.previous()"><span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span></button>
 						<button type="button" class="btn btn-success btn-lg" ng-click="jukebox.ctrl.play()" ng-show="!jukebox.state.isPlay()"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
 						<button type="button" class="btn btn-danger btn-lg" ng-click="jukebox.ctrl.pause()" ng-show="jukebox.state.isPlay()"><span class="glyphicon glyphicon-pause" aria-hidden="true"></span></button>
@@ -44,77 +48,22 @@
 	                </div>
 				</div>
 
-				<div class="col-md-3 col-xs-6">
-					<img src="http://cfile22.uf.tistory.com/image/2373E2335293CD600DC795" alt="" width="100%" class="pull-right img-responsive img-rounded">  
-				</div>
-				
             </div> <!--row-->
 			</div> <!--container-->
 		</div>
 
 	</header>
 
-	<div class="container" ng-show="loginState">
+	<div class="container" ng-show="onState('login')">
 	    <div class="row">
-            <div class="col-md-9 col-xs-6">
-				<table class="table table-hover">
-                    <caption>
-                    </caption>
-					<thead>
-						<tr>
-							<th></th>
-							<th></th>
-							<th>Title</th>
-							<th>Artist</th>
-							<th>URL</th>	
-							<th></th>
-							<th></th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="song in songs" ng-class="{info: song == currentSong}">
-							<th><span ng-click="delete(song)" class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></th>
-							<th><span  ng-click="edit(song)" class="glyphicon glyphicon-edit" aria-hidden="true"></span></th>
-							<th>{{song.title}}</th>
-							<th>{{song.artist}}</th>
-							<th><small><a ng-href="{{song.url}}" target="_blank">{{ "... " + youtube_url2id(song.url) + " ..." }}</a></small></th>
-							<th><span ng-click="jukebox.ctrl.playThis($index)" class="glyphicon glyphicon-play" aria-hidden="true"></span></th>
-							<th><span ng-click="up(song)" class="glyphicon glyphicon-collapse-up" aria-hidden="true"></span></th>
-							<th><span ng-click="down(song)" class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span></th>
-						</tr>
-					</tbody>
-					<tfoot ng-if="!editing">
-						<th></th>
-						<th><span ng-click="add(newSong)" class="glyphicon glyphicon-check" aria-hidden="true"></span></th>
-						<th><input ng-model='newSong.title' type='text' placeholder='title'></th>
-						<th><input ng-model='newSong.artist' type='text' placeholder='artist'></th>
-						<th><input ng-model='newSong.url' type='text' placeholder='url'></th>
-						<th></th>
-						<th></th>
-						<th></th>
-					</tfoot>
-					<tfoot ng-if="editing">
-						<th></th>
-						<th><span ng-click="update(updatedSong)" class="glyphicon glyphicon-check" aria-hidden="true"></span></th>
-						<th><input ng-model='updatedSong.title' type='text'></th>
-						<th><input ng-model='updatedSong.artist' type='text'></th>
-						<th><input ng-model='updatedSong.url' type='text'></th>
-						<th></th>
-						<th></th>
-						<th></th>
-					</tfoot>
-				</table>
-			</div> <!-- col -->
-			
-            <div class="col-md-3 col-xs-6">
+	    	<div class="col-md-3 col-xs-6">
             	<div class="panel panel-default">
 				    <!-- Default panel contents -->
 				    <div class="panel-heading">
 				    	Play List
 				    </div>
 				    <ul class="list-group">
-					    <li class="list-group-item" ng-repeat="listname in playlists" ng-click="reloadPlayList(listname)" ng-class="{'list-group-item-success':listname===currentPlaylist}">
+					    <li class="list-group-item" style="cursor:pointer" ng-repeat="listname in playlists" ng-click="reloadPlayList(listname)" ng-class="{'list-group-item-success':listname===currentPlaylist}">
 					    	{{listname}}
 					    </li>
 					</ul>
@@ -130,7 +79,54 @@
 		    		<span ng-click="editPlayList()" class="glyphicon glyphicon-edit" aria-hidden="true"></span>	
 		    	</button>
             </div>
-
+	    	
+            <div class="col-md-9 col-xs-6">
+				<table class="table table-hover">
+                    <caption>
+                    </caption>
+					<thead>
+						<tr>
+							<th></th>
+							<th></th>
+							<th>Title</th>
+							<th>Artist</th>
+							<th>URL</th>	
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="song in songs" ng-class="{info: song == currentSong}">
+							<th><span style="cursor:pointer" ng-click="up(song)" class="glyphicon glyphicon-collapse-up" aria-hidden="true"></span></th>
+							<th><span style="cursor:pointer" ng-click="down(song)" class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span></th>
+							<th ng-click="jukebox.ctrl.playThis($index)" style="cursor:pointer">{{song.title}}</th>
+							<th>{{song.artist}}</th>
+							<th><small><a ng-href="{{song.url}}" target="_blank">{{ "... " + youtube_url2id(song.url) + " ..." }}</a></small></th>
+							<th><span style="cursor:pointer" ng-click="delete(song)" class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></th>
+							<th><span style="cursor:pointer" ng-click="edit(song)" class="glyphicon glyphicon-edit" aria-hidden="true"></span></th>
+						</tr>
+					</tbody>
+					<tfoot ng-if="!editing">
+						<th></th>
+						<th><span ng-click="add(newSong)" class="glyphicon glyphicon-check" aria-hidden="true"></span></th>
+						<th><input ng-model='newSong.title' type='text' placeholder='title'></th>
+						<th><input ng-model='newSong.artist' type='text' placeholder='artist'></th>
+						<th><input ng-model='newSong.url' type='text' placeholder='url'></th>
+						<th></th>
+						<th></th>
+					</tfoot>
+					<tfoot ng-if="editing">
+						<th></th>
+						<th><span ng-click="update(updatedSong)" class="glyphicon glyphicon-check" aria-hidden="true"></span></th>
+						<th><input ng-model='updatedSong.title' type='text'></th>
+						<th><input ng-model='updatedSong.artist' type='text'></th>
+						<th><input ng-model='updatedSong.url' type='text'></th>
+						<th></th>
+						<th></th>
+					</tfoot>
+				</table>
+			</div> <!-- col -->
+			
 		</div> <!-- row -->
 	</div> <!-- container -->
 
