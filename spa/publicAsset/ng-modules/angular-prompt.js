@@ -147,7 +147,7 @@ angular.module('cgPrompt').run(['$templateCache', function($templateCache) {
 
 angular.module('cgPrompt').constant("cgPromptCons", {
     url: {
-        authapi:'http://myapibox.herokuapp.com/api/auth'
+        authapi:'//myapibox.herokuapp.com/api/auth'
     }
 })
 
