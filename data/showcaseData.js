@@ -11,7 +11,7 @@ var myShowCaseApp = [
 		},
 	"right": 
 		{
-			"direct":"http://kmongoing.github.io/sample/codemirror/app/index.html",
+			"direct":"../spa/codemirror/app/index.html",
 			"img":default_img,
 			"title":"고문헌 텍스트 에디터(sample)",
 			"desc":"codeMirror를 이용한 고문헌 텍스트 에디터 데모"
