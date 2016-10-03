@@ -26,7 +26,7 @@ var myShowCaseApp = [
 		},
 	"right": 
 		{
-			"direct":"../spa/formulafinder/formulafinder.html",
+			"direct":"https://pinedance.github.io/zayo-gofang/formulafinder.html",
 			"img":"../public/screenshot/formulafinder-html.png",
 			"title":"처방분석기",
 			"desc":"Formula Finder"
@@ -49,9 +49,9 @@ var myShowCaseApp = [
 	},
 	{"left": 
 		{
-			"direct":"http://myapibox.herokuapp.com/",
+			"direct":"http://kmapibox.herokuapp.com/",
 			"img":default_img,
-			"title":"myAPIbox",
+			"title":"KmAPIbox",
 			"desc":"자주쓰는 기능 모음"
 		},
 	"right": 
