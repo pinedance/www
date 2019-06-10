@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+</head>
+
+<body>
+
+    <script type="text/javascript">
+
+        (function(){
+
+            const redirects = {
+                "blog": "https://pinedance.github.io/blog"
+            }
+
+            function getAnchor() {
+                var currentUrl = document.URL,
+                urlParts   = currentUrl.split('#');
+                return (urlParts.length > 1) ? urlParts[1] : null;
+            }
+
+            function goto(){
+                var currentanchor = getAnchor()
+                var nexturl = ( redirects[ currentanchor ] )? redirects[ currentanchor ] : 'https://pinedance.github.io'
+                window.location.href = nexturl
+            }
+
+            goto()
+
+        })()
+
+    </script>
+
+</body>
+
+</html>
