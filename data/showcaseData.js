@@ -4,14 +4,14 @@ var myShowCaseApp = [
 
 	{"left":
 		{
-			"direct":"http://115.68.184.81:3838/",
+			"direct":"https://sandbox.mediclassics.kr:3838/",
 			"img": default_img,
 			"title":"shiny demo",
 			"desc":"R project"
 		},
 	"right":
 		{
-			"direct":"../spa/codemirror/app/index.html",
+			"direct":"http://info.mediclassics.kr/apps/codemirror/index.html",
 			"img":default_img,
 			"title":"고문헌 텍스트 에디터(sample)",
 			"desc":"codeMirror를 이용한 고문헌 텍스트 에디터 데모"
@@ -26,7 +26,7 @@ var myShowCaseApp = [
 		},
 	"right":
 		{
-			"direct":"../spa/combinator/combinator.html",
+			"direct":"http://info.mediclassics.kr/apps/combinator/index.html",
 			"img":default_img,
 			"title":"Combinator",
 			"desc":"한자발음생성기"
@@ -34,7 +34,7 @@ var myShowCaseApp = [
 	},
     {"left":
 		{
-			"direct":"../spa/replacer/replacer.html",
+			"direct":"http://info.mediclassics.kr/apps/replacer/index.html",
 			"img":default_img,
 			"title":"rePlacer",
 			"desc":"text file 내용을 일괄 변환"
