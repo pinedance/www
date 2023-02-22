@@ -2,64 +2,68 @@ var default_img = "../public/screenshot/700x400.gif"
 
 var myShowCaseApp = [
 
-	{"left":
+	{
+		"left":
 		{
-			"direct":"https://sandbox.mediclassics.kr:3838/",
+			"direct": "https://sandbox.mediclassics.kr:448/",
 			"img": default_img,
-			"title":"shiny demo",
-			"desc":"R project"
+			"title": "shiny demo",
+			"desc": "R project"
 		},
-	"right":
+		"right":
 		{
-			"direct":"http://info.mediclassics.kr/apps/codemirror/index.html",
-			"img":default_img,
-			"title":"고문헌 텍스트 에디터(sample)",
-			"desc":"codeMirror를 이용한 고문헌 텍스트 에디터 데모"
+			"direct": "http://info.mediclassics.kr/apps/codemirror/index.html",
+			"img": default_img,
+			"title": "고문헌 텍스트 에디터(sample)",
+			"desc": "codeMirror를 이용한 고문헌 텍스트 에디터 데모"
 		}
 	},
-	{"left":
+	{
+		"left":
 		{
-			"direct":"http://mytoolbox.heroku.com/",
-			"img":"../public/screenshot/mytoolbox-herokuapp-com.png",
-			"title":"myToolbox",
-			"desc":"한문 text 변환에 필요한 기능 제공"
+			"direct": "http://mytoolbox.heroku.com/",
+			"img": "../public/screenshot/mytoolbox-herokuapp-com.png",
+			"title": "myToolbox",
+			"desc": "한문 text 변환에 필요한 기능 제공"
 		},
-	"right":
+		"right":
 		{
-			"direct":"http://info.mediclassics.kr/apps/combinator/index.html",
-			"img":default_img,
-			"title":"Combinator",
-			"desc":"한자발음생성기"
+			"direct": "http://info.mediclassics.kr/apps/combinator/index.html",
+			"img": default_img,
+			"title": "Combinator",
+			"desc": "한자발음생성기"
 		}
 	},
-    {"left":
+	{
+		"left":
 		{
-			"direct":"http://info.mediclassics.kr/apps/replacer/index.html",
-			"img":default_img,
-			"title":"rePlacer",
-			"desc":"text file 내용을 일괄 변환"
+			"direct": "http://info.mediclassics.kr/apps/replacer/index.html",
+			"img": default_img,
+			"title": "rePlacer",
+			"desc": "text file 내용을 일괄 변환"
 		},
-	"right":
+		"right":
 		{
-			"direct":"http://kmapibox.herokuapp.com/",
-			"img":default_img,
-			"title":"KmAPIbox",
-			"desc":"자주쓰는 기능 모음"
+			"direct": "http://kmapibox.herokuapp.com/",
+			"img": default_img,
+			"title": "KmAPIbox",
+			"desc": "자주쓰는 기능 모음"
 		},
 	},
-	{"left":
+	{
+		"left":
 		{
-			"direct":"",
-			"img":default_img,
-			"title":"준비중",
-			"desc":""
+			"direct": "",
+			"img": default_img,
+			"title": "준비중",
+			"desc": ""
 		},
-	"right":
+		"right":
 		{
-			"direct":"",
-			"img":default_img,
-			"title":"준비중",
-			"desc":""
+			"direct": "",
+			"img": default_img,
+			"title": "준비중",
+			"desc": ""
 		}
 	}
 
