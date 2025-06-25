@@ -1,0 +1,54 @@
+blogs:
+  - title: 지금의 흔적
+    image: images/blogs1.png
+    description: 머리 속에 떠오르는 생각들, 피할 수 없었던 삽질들에 대한 비망록
+    tech_stack: [jekyll, github-pages]
+    link: https://pinedance.github.io/blog
+  - title: 한의수필
+    image: images/blogs2.png
+    description: 한의학과 관련된 단상
+    tech_stack: [jekyll, github-pages]
+    link: https://pinedance.github.io/mediclassics/
+  - title: DataDate
+    image: images/blogs3.png
+    description: 데이터에 대한 궁금증 탐구 with R 
+    tech_stack: [R, R-Reports, rpubs]
+    link: https://rpubs.com/pinedance
+
+research:
+  - title: Research Log
+    image: images/research1.png
+    description: 지금까지 세상에 내보낸 연구 결과들
+    tech_stack: [jekyll, github-pages]
+    link: https://pinedance.github.io/research/
+  - title: 상한금궤Plus
+    image: images/research2.png
+    description: 《상한론(傷寒論)》, 《금궤요략(金匱要略)》 원문 및 고찰
+    tech_stack: [jekyll, github-pages]
+    link: https://pinedance.github.io/shanghanlun/
+
+appsnwebs:
+  - title: 고방검색기
+    image: images/appsnwebs1.png
+    description: 한의학 상한 금궤 처방 검색기
+    copyright: ZAYO Soft
+    tech_stack: [SPA, angular.js, github-pages]
+    link: https://zayosoft.github.io/spa-gofang/formulafinder.html
+  - title: 결정장애 극복하기
+    image: images/appsnwebs2.png
+    description: AHP로 결정장애를 극복해보자
+    copyright: ZAYO Soft
+    tech_stack: [SPA, angular.js, github-pages]
+    link: https://zayosoft.github.io/spa-ahp-mind-miner/app.html
+  - title: EveryFormulas
+    image: images/appsnwebs3.png
+    description: 한의학 처방(방제) 분석 애플리케이션
+    copyright: KIOM
+    tech_stack: [SPA, Vue.js, netlify]
+    link: https://every-formula.netlify.app
+  - title: 경희가족한의원 홈페이지
+    image: images/appsnwebs4.png
+    description: 경희가족한의원 홈페이지
+    copyright: 경희가족한의원
+    tech_stack: [python, mkdocs, material_for_mkdocs]
+    link: https://www.khfamilyclinic.com

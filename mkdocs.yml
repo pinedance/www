@@ -1,0 +1,114 @@
+site_name: Pinedance's One Fine Story
+site_author: pinedance
+site_description: Pinedance's Homepage
+
+site_url: https://www.pinedance.click
+
+nav:
+  - Main: index.md
+  # - Blogs: home/blogs.md
+  # - Researchs: home/researchs.md
+  # - Projects: home/projects.md
+  # - Demos: home/demos.md
+  - "ZAYO Soft": zayosoft.md
+  - AboutMe: aboutme.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/pinedance
+  generator: false
+  urls:
+    github: https://github.com/pinedance
+  info:
+    email: pinedance@gmail.com
+
+draft_docs: |
+  drafts/               # A "drafts" directory anywhere.
+  _unpublished.md       # A md file ending in _unpublished.md
+
+validation:
+  omitted_files: warn
+  absolute_links: warn  # Or 'relative_to_docs' - new in MkDocs 1.6
+  unrecognized_links: warn
+  anchors: warn  # New in MkDocs 1.6
+
+theme:
+  name: material
+  custom_dir: overrides
+  language: ko
+  # icon:
+  #   logo: fontawesome/solid/hospital
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    # - navigation.indexes
+    - navigation.top
+    - navigation.tracking
+    - navigation.instant
+    # - navigation.footer
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.tabs.link
+    - content.code.copy
+    - toc.follow
+    - toc.integrate 
+    - announce.dismiss
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: 다크 모드로 전환
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: 라이트 모드로 전환
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - def_list
+  - meta
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+      separator: "_"
+      toc_depth: 3
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.extra
+
+plugins:
+  - search
+  - macros:
+      include_dir: include
+      include_yaml:
+        - demo: data/demo.yaml
+        - showcase: data/showcase.yaml
+
+extra_css:
+  - assets/css/custom.css
+  - assets/css/showcase.css
+
+copyright: Copyright &copy; 2010 - now Pinedance

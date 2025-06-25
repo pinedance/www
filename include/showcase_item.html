@@ -1,0 +1,38 @@
+<div class="showcase-item">
+  <div class="showcase-image">
+    {% if item.link %}
+    <a href="{{ item.link }}" target="_blank">
+      <img src="{{ item.image }}" alt="{{ item.title }} 스냅샷">
+    </a>
+    {% else %}
+    <img src="{{ item.image }}" alt="{{ item.title }} 스냅샷">
+    {% endif %}
+  </div>
+  <div class="showcase-content">
+    <p class="showcase-title">{{ item.title }}
+      {% if item.copyright %}
+      <span class="showcase-copyright">
+        &copy; {{ item.copyright }}
+      </span>
+      {% endif %}
+    </p>
+
+    <p>{{ item.description }}</p>
+
+    {% if item.tech_stack %}
+    <div class="article-tags">
+      {% for stack in item.tech_stack %}
+      <span class="md-tag">{{ stack }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+
+    {% if item.link %}
+    <p>
+      <a href="{{ item.link }}" target="_blank">사이트 방문하기</a>
+    </p>
+    {% endif %}
+
+  </div>
+</div>
