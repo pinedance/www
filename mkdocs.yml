@@ -2,7 +2,8 @@ site_name: Pinedance's One Fine Story
 site_author: pinedance
 site_description: Pinedance's Homepage
 
-site_url: https://www.pinedance.click
+# site_url: https://www.pinedance.click
+site_url: https://pinedance.github.io
 
 nav:
   - Main: index.md
