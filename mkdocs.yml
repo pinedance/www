@@ -25,7 +25,7 @@ extra:
 
 draft_docs: |
   drafts/               # A "drafts" directory anywhere.
-  _unpublished.md       # A md file ending in _unpublished.md
+  _*.*       # A md file ending in _unpublished.md
 
 validation:
   omitted_files: warn
