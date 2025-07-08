@@ -1,14 +1,22 @@
+urls:
+  zayosoft: https://zayosoft.github.io
+  blog: https://blog.pinedance.click
+  mediclassics: https://mediclassics.pinedance.click
+  research: https://research.pinedance.click
+  shanghanlun: https://shanghanlun.pinedance.click
+  demo: https://demo.pinedance.click
+  
 blogs:
   - title: 지금의 흔적
     image: images/blogs1.png
     description: 머리 속에 떠오르는 생각들, 피할 수 없었던 삽질들에 대한 비망록
     tech_stack: [jekyll, github-pages]
-    link: https://pinedance.github.io/blog
+    link: https://blog.pinedance.click
   - title: 한의수필
     image: images/blogs2.png
     description: 한의학과 관련된 단상
     tech_stack: [jekyll, github-pages]
-    link: https://pinedance.github.io/mediclassics/
+    link: https://mediclassics.pinedance.click
   - title: DataDate
     image: images/blogs3.png
     description: 데이터에 대한 궁금증 탐구 with R 
@@ -20,12 +28,12 @@ research:
     image: images/research1.png
     description: 지금까지 세상에 내보낸 연구 결과들
     tech_stack: [jekyll, github-pages]
-    link: https://pinedance.github.io/research/
+    link: https://research.pinedance.click
   - title: 상한금궤Plus
     image: images/research2.png
     description: 《상한론(傷寒論)》, 《금궤요략(金匱要略)》 원문 및 고찰
     tech_stack: [jekyll, github-pages]
-    link: https://pinedance.github.io/shanghanlun/
+    link: https://shanghanlun.pinedance.click
 
 appsnwebs:
   - title: 고방검색기

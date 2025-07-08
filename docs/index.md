@@ -43,7 +43,7 @@
 
 교육 자료
 
-- [상한금궤Plus](https://pinedance.github.io/shanghanlun/)
+- [상한금궤Plus]( {{ showcase.urls.shanghanlun }})
 
 - [How to Analysis Text Data of Traditional East Asian Medicine](https://nbviewer.org/github/pinedance/workshop-KM-data-analysis/blob/master/notebooks/README.ipynb)
 

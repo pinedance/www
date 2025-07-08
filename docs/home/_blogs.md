@@ -15,7 +15,7 @@ desc: 운영 중인 블로그
 
     머리 속에 떠오르는 생각들, 피할 수 없었던 삽질들을 잊지 않도록 기록해 둔다.
 
-    [:octicons-arrow-right-24: 방문하기](https://pinedance.github.io/blog/)
+    [:octicons-arrow-right-24: 방문하기]( {{showcase.urls.blog }})
 
 - __한의수필__
 
@@ -23,6 +23,6 @@ desc: 운영 중인 블로그
 
     한의학과 관련된 단상을 적어둔다.
 
-    [:octicons-arrow-right-24: 방문하기](https://pinedance.github.io/mediclassics/)
+    [:octicons-arrow-right-24: 방문하기]( {{showcase.urls.mediclassics }})
 
 </div>
