@@ -25,7 +25,7 @@ extra:
     email: pinedance@gmail.com
   analytics:
     provider: google
-    property: G-HY21CDDFXN
+    property: G-DN7H39XSVB
 
 draft_docs: |
   drafts/               # A "drafts" directory anywhere.
