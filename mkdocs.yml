@@ -20,6 +20,8 @@ extra:
       link: https://github.com/pinedance
   generator: false
   urls:
+    homepage: https://www.pinedance.click
+    site: https://www.pinedance.click
     github: https://github.com/pinedance
   info:
     email: pinedance@gmail.com
