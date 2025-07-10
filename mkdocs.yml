@@ -23,6 +23,9 @@ extra:
     github: https://github.com/pinedance
   info:
     email: pinedance@gmail.com
+  analytics:
+    provider: google
+    property: G-HY21CDDFXN
 
 draft_docs: |
   drafts/               # A "drafts" directory anywhere.
